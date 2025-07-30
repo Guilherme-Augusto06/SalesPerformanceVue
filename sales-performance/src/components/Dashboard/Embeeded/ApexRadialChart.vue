@@ -21,8 +21,12 @@ export default {
     },
   methods: {
     renderChart() {
+      const salesData = [850, 720, 650];
+      const maxValue = Math.max(...salesData);
+      const series = salesData.map(value => Math.round((value / maxValue) * 100));
+      
       const options = {
-        series: [76, 67, 61],
+        series: series,
         chart: {
           height: 390,
           type: 'radialBar',
@@ -52,7 +56,9 @@ export default {
               offsetX: -8,
               fontSize: '16px',
               formatter: function(seriesName, opts) {
-                return seriesName + ":  " + opts.w.globals.series[opts.seriesIndex] + "%"
+                const index = opts.seriesIndex;
+                const actualValue = salesData[index];
+                return seriesName + ":  " + actualValue + " vendas"
               },
             },
           }
