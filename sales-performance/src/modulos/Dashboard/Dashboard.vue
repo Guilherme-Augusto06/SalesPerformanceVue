@@ -59,55 +59,8 @@
         <SimpleCard title="Produtos Vendidos" :value="'8.569'" :color="'#7b1fa2'" icon="mdi-package-variant"/>
       </v-col>
     </v-row>
+    <DashboardManagerial />
 
-    <v-row>
-      <v-col cols="12" md="8">
-        <ApexAreaChart title="Evolução de Vendas"/>
-      </v-col>
-      <v-col cols="12" md="4">
-        <ApexDonutChart title="Meta vs Realizado"/>
-      </v-col>
-    </v-row>
-    
-    <v-row class="mt-4">
-      <v-col cols="12" md="8">
-        <ApexBarChart title="Vendas Totais"/>
-      </v-col>
-      <v-col cols="12" md="4">
-        <ApexRadialChart title="Vendas Totais"/>
-      </v-col>
-    </v-row>
-    
-    <v-row class="mt-4">
-      <v-col cols="12" md="8">
-        <ApexBarAlternativeChart title="Top 10 Produtos Mais Vendidos"  />
-      </v-col>
-      <v-col cols="6" sm="3" md="4">
-        <ApexAlternativeDonutChart title="Margem Bruta vs Margem Líquida" class="mb-6"/>
-          <SimpleCard title="Ticket médio por cliente" :value="'R$ 1.200'" :color="'#fff'" icon="mdi-chart-line" colorIcon="black"/>
-
-      </v-col>
-
-    </v-row>
-
-    <v-row class="mt-4">
-      <v-col cols="12" md="8">
-        <ApexAreaAlternativeChart title="Margem Bruta x Margem Líquida"/>
-      </v-col>
-      <v-col cols="6" sm="3" md="4">
-        <MapDrilldown />
-      </v-col>
-
-    </v-row>
-
-    <v-row class="mt-4">
-      <v-col cols="12" md="8">
-        <ApexBarBasicChart title="Faturamento por região"/>
-      </v-col>
-            <v-col cols="6" sm="3" md="4">
-        <MapDrilldown />
-      </v-col>
-    </v-row>
 
 
   </div>
@@ -116,30 +69,14 @@
 
 <script>
 // Imports dos componentes utilizados no Dashboard
-import ApexAreaChart from '../../components/Dashboard/Embeeded/ApexAreaChart.vue';
-import ApexDonutChart from '../../components/Dashboard/Embeeded/ApexDonutChart.vue';
-import ApexBarChart from '../../components/Dashboard/Embeeded/ApexBarChart.vue';
-import ApexBarAlternativeChart from '../../components/Dashboard/Embeeded/ApexBarAlternativeChart.vue';
-import ApexAreaAlternativeChart from '../../components/Dashboard/Embeeded/ApexAreaAlternativeChart.vue';
-import ApexRadialChart from '../../components/Dashboard/Embeeded/ApexRadialChart.vue';
 import SimpleCard from '../../components/Dashboard/Embeeded/SimpleCard.vue';
-import ApexBarBasicChart from '../../components/Dashboard/Embeeded/ApexBarBasicChart.vue';
-import ApexAlternativeDonutChart from '../../components/Dashboard/Embeeded/ApexAlternativeDonutChart.vue';
-import MapDrilldown from '../../components/Dashboard/Embeeded/MapDrilldown.vue';
+import DashboardManagerial from '../../components/Dashboard/Embeeded/DashboardManagerial.vue';
 
 export default {
   name: 'Dashboard',
   components: {
-    ApexAreaChart,
-    ApexDonutChart,
-    ApexBarChart,
-    ApexBarAlternativeChart,
-    ApexAreaAlternativeChart,
-    ApexRadialChart,
     SimpleCard,
-    ApexBarBasicChart,
-    ApexAlternativeDonutChart,
-    MapDrilldown
+    DashboardManagerial
   },
   data() {
     return {
