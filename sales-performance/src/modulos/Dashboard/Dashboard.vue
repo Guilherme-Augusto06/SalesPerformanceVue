@@ -10,7 +10,6 @@
         </div>
         <v-expand-transition>
           <div v-if="toggleFiltersVisible" class="pa-4 bg-grey-lighten-5 rounded">
-            <!-- Conteúdo dos filtros -->
             <v-row>
 
               <v-col cols="12" md="6">
@@ -45,7 +44,7 @@
       <h1 class="text-h3 font-weight-light text-primary mb-2">Dashboard</h1>
       <p class="text-subtitle-1 text-grey">Sales Performance Overview</p>
     </div>
-    <!-- Indicadores Gerais - Primeira linha -->
+
     <v-row class="mb-4">
       <v-col cols="6" sm="3" md="3">
         <SimpleCard title="Vendas Totais" :value="'R$ 2.450.000'" :color="'#1976d2'" icon="mdi-currency-usd"/>
@@ -61,7 +60,6 @@
       </v-col>
     </v-row>
 
-    <!-- Segunda linha - Gráficos de área e donut -->
     <v-row>
       <v-col cols="12" md="8">
         <ApexAreaChart title="Evolução de Vendas"/>
@@ -71,7 +69,6 @@
       </v-col>
     </v-row>
     
-    <!-- Quarta linha - Gráfico de barras e radial -->
     <v-row class="mt-4">
       <v-col cols="12" md="8">
         <ApexBarChart title="Vendas Totais"/>
@@ -81,21 +78,18 @@
       </v-col>
     </v-row>
     
-    <!-- Quarta linha - Gráfico de barras alternativo -->
     <v-row class="mt-4">
       <v-col cols="12" md="8">
         <ApexBarAlternativeChart title="Top 10 Produtos Mais Vendidos"  />
       </v-col>
     </v-row>
 
-    <!-- Quinta linha - Gráfico de área alternativo -->
     <v-row class="mt-4">
       <v-col cols="12" md="8">
         <ApexAreaAlternativeChart title="Margem Bruta x Margem Líquida"/>
       </v-col>
     </v-row>
 
-    <!-- Futuros componentes podem ser adicionados aqui -->
 
   </div>
   
@@ -141,7 +135,7 @@ export default {
         filter: this.selectedFilter,
         dateRange: this.dateRange
       });
-      // Aqui você pode implementar a lógica de filtros
+      // 
     },
     clearFilters() {
       this.selectedFilter = null;
