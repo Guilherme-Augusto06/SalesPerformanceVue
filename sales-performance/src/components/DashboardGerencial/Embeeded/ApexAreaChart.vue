@@ -18,41 +18,127 @@ export default {
       type: String,
       default: 'Evolução de Vendas'
     },
-    
+    chartData: {
+      type: Array,
+      default: () => []
+    },
+    categories: {
+      type: Array,
+      default: () => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']
+    },
+    values: {
+      type: Array,
+      default: () => [10, 41, 35, 51, 49, 62, 69, 91, 148]
+    },
+    seriesName: {
+      type: String,
+      default: 'Vendas'
+    },
+    chartHeight: {
+      type: Number,
+      default: 350
+    },
+    chartType: {
+      type: String,
+      default: 'line' // 'line', 'area'
+    },
+    enableZoom: {
+      type: Boolean,
+      default: false
+    },
+    showDataLabels: {
+      type: Boolean,
+      default: false
+    },
+    strokeCurve: {
+      type: String,
+      default: 'straight' // 'straight', 'smooth', 'stepline'
+    },
+    primaryColor: {
+      type: [String, Array],
+      default: '#008FFB'
+    },
+    showGrid: {
+      type: Boolean,
+      default: true
+    },
+    gridColors: {
+      type: Array,
+      default: () => ['#f3f3f3', 'transparent']
+    },
+    gridOpacity: {
+      type: Number,
+      default: 0.5
+    },
+    fillType: {
+      type: String,
+      default: 'solid' // 'solid', 'gradient'
+    },
+    fillOpacity: {
+      type: Number,
+      default: 0.3
+    }
+  },
+  computed: {
+    processedChartData() {
+      // Se chartData for fornecido, usa ele diretamente
+      if (this.chartData && this.chartData.length > 0) {
+        return this.chartData;
+      }
+      
+      // Caso contrário, usa os valores das props
+      return [{
+        name: this.seriesName,
+        data: this.values
+      }];
+    }
   },
   methods: {
     renderChart() {
       const options = {
-          series: [{
-            name: "Vendas",
-            data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-        }],
-          chart: {
-          height: 350,
-          type: 'line',
+        series: this.processedChartData,
+        chart: {
+          height: this.chartHeight,
+          type: this.chartType,
           zoom: {
-            enabled: false
+            enabled: this.enableZoom
           }
         },
         dataLabels: {
-          enabled: false
+          enabled: this.showDataLabels
         },
         stroke: {
-          curve: 'straight'
+          curve: this.strokeCurve
+        },
+        colors: Array.isArray(this.primaryColor) ? this.primaryColor : [this.primaryColor],
+        fill: {
+          type: this.fillType,
+          opacity: this.fillOpacity,
+          gradient: {
+            shade: 'light',
+            type: 'vertical',
+            shadeIntensity: 0.25,
+            gradientToColors: undefined,
+            inverseColors: true,
+            opacityFrom: this.fillOpacity,
+            opacityTo: 0.1,
+            stops: [0, 50, 100]
+          }
         },
         grid: {
+          show: this.showGrid,
           row: {
-            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-            opacity: 0.5
+            colors: this.gridColors,
+            opacity: this.gridOpacity
           },
         },
         xaxis: {
-          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+          categories: this.categories,
         }
-        };
+      };
 
-        var chart = new ApexCharts(document.querySelector("#apex-area-chart"), options);
-        chart.render();
+      const chart = new ApexCharts(document.querySelector("#apex-area-chart"), options);
+      chart.render();
     }
   }
 };

@@ -68,7 +68,7 @@
       </v-card>
     </div>
 
-      <div class="position-fixed top-0 right-0 m-2 d-flex flex-column ga-6 mt-14 mr-2" style="z-index: 1000;">
+      <div class="position-fixed d-flex flex-column ga-6" style="z-index: 1000; right: 1rem; top: 50%; transform: translateY(-50%);">
         <v-btn 
           class="" 
           :color="activeDashboard === 'managerial' ? 'primary' : 'grey'" 
