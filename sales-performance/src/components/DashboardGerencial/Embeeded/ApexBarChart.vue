@@ -18,87 +18,155 @@ export default {
       type: String,
       default: 'Vendas Totais'
     },
+    chartData: {
+      type: Array,
+      default: () => []
+    },
+    categories: {
+      type: Array,
+      default: () => ['Mensal', 'Trimestral', 'Anual']
+    },
+    values: {
+      type: Array,
+      default: () => [45, 120, 480]
+    },
+    goalValues: {
+      type: Array,
+      default: () => [50, 135, 500]
+    },
+    seriesName: {
+      type: String,
+      default: 'Atual'
+    },
+    chartHeight: {
+      type: Number,
+      default: 350
+    },
+    horizontal: {
+      type: Boolean,
+      default: true
+    },
+    primaryColor: {
+      type: String,
+      default: '#00E396'
+    },
+    goalColor: {
+      type: String,
+      default: '#775DD0'
+    },
+    showLegend: {
+      type: Boolean,
+      default: true
+    },
+    legendItems: {
+      type: Array,
+      default: () => ['Atual', 'Esperado']
+    },
+    goalStrokeWidth: {
+      type: Number,
+      default: 10
+    },
+    goalStrokeHeight: {
+      type: Number,
+      default: 0
+    },
+    goalStrokeLineCap: {
+      type: String,
+      default: 'round'
+    },
+    goalName: {
+      type: String,
+      default: 'Esperado'
+    },
+    showDataLabels: {
+      type: Boolean,
+      default: true
+    },
+    dataLabelFormat: {
+      type: String,
+      default: 'value/goal' // 'value/goal', 'value', 'percentage'
+    }
+  },
+  computed: {
+    processedChartData() {
+      // Se chartData for fornecido, usa ele diretamente
+      if (this.chartData && this.chartData.length > 0) {
+        return this.chartData.map(item => ({
+          ...item,
+          goals: item.goals ? item.goals.map(goal => ({
+            name: this.goalName,
+            value: goal.value,
+            strokeWidth: this.goalStrokeWidth,
+            strokeHeight: this.goalStrokeHeight,
+            strokeLineCap: this.goalStrokeLineCap,
+            strokeColor: this.goalColor
+          })) : []
+        }));
+      }
+      
+      // Caso contrário, constrói os dados a partir das props individuais
+      return this.categories.map((category, index) => ({
+        x: category,
+        y: this.values[index] || 0,
+        goals: this.goalValues[index] ? [
+          {
+            name: this.goalName,
+            value: this.goalValues[index],
+            strokeWidth: this.goalStrokeWidth,
+            strokeHeight: this.goalStrokeHeight,
+            strokeLineCap: this.goalStrokeLineCap,
+            strokeColor: this.goalColor
+          }
+        ] : []
+      }));
+    }
   },
   methods: {
     renderChart() {
       const options = {
         series: [
           {
-            name: 'Atual',
-            data: [
-              {
-                x: 'Mensal',
-                y: 45,
-                goals: [
-                  {
-                    name: 'Esperado',
-                    value: 50,
-                    strokeWidth: 10,
-                    strokeHeight: 0,
-                    strokeLineCap: 'round',
-                    strokeColor: '#775DD0'
-                  }
-                ]
-              },
-              {
-                x: 'Trimestral',
-                y: 120,
-                goals: [
-                  {
-                    name: 'Esperado',
-                    value: 135,
-                    strokeWidth: 10,
-                    strokeHeight: 0,
-                    strokeLineCap: 'round',
-                    strokeColor: '#775DD0'
-                  }
-                ]
-              },
-              {
-                x: 'Anual',
-                y: 480,
-                goals: [
-                  {
-                    name: 'Esperado',
-                    value: 500,
-                    strokeWidth: 10,
-                    strokeHeight: 0,
-                    strokeLineCap: 'round',
-                    strokeColor: '#775DD0'
-                  }
-                ]
-              }
-            ]
+            name: this.seriesName,
+            data: this.processedChartData
           }
         ],
         chart: {
-          height: 350,
+          height: this.chartHeight,
           type: 'bar'
         },
         plotOptions: {
           bar: {
-            horizontal: true,
+            horizontal: this.horizontal,
           }
         },
-        colors: ['#00E396'],
+        colors: [this.primaryColor],
         dataLabels: {
-          formatter: function(val, opt) {
-            const goals =
-              opt.w.config.series[opt.seriesIndex].data[opt.dataPointIndex]
-                .goals
-        
+          enabled: this.showDataLabels,
+          formatter: (val, opt) => {
+            const goals = opt.w.config.series[opt.seriesIndex].data[opt.dataPointIndex].goals;
+            
             if (goals && goals.length) {
-              return `${val} / ${goals[0].value}`
+              const goalValue = goals[0].value;
+              
+              switch (this.dataLabelFormat) {
+                case 'value':
+                  return val.toString();
+                case 'percentage':
+                  return `${Math.round((val / goalValue) * 100)}%`;
+                case 'value/goal':
+                default:
+                  return `${val} / ${goalValue}`;
+              }
             }
-            return val
+            return val.toString();
           }
         },
         legend: {
-          show: true,
+          show: this.showLegend,
           showForSingleSeries: true,
-          customLegendItems: ['Atual', 'Esperado'],
+          customLegendItems: this.legendItems,
           markers: {
-            fillColors: ['#00E396', '#775DD0']
+            fillColors: [this.primaryColor, this.goalColor]
           }
         }
       };
