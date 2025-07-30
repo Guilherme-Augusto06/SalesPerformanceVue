@@ -1,5 +1,5 @@
 <template>
-  <div class="ml-16 pa-6">
+  <div class="ml-16 pa-6 mr-16">
     <!-- Título do Dashboard -->
     <div>
       <div class="elevation-2 rounded-xl pa-4 bg-white mb-6">
@@ -60,23 +60,21 @@
       </v-col>
     </v-row>
     <DashboardManagerial />
-
-
-
+    <DashSelection />
   </div>
-  
 </template>
-
 <script>
 // Imports dos componentes utilizados no Dashboard
 import SimpleCard from '../../components/Dashboard/Embeeded/SimpleCard.vue';
 import DashboardManagerial from '../../components/Dashboard/Embeeded/DashboardManagerial.vue';
+import DashSelection from '../../components/Dashboard/Embeeded/DashSelection.vue';
 
 export default {
   name: 'Dashboard',
   components: {
     SimpleCard,
-    DashboardManagerial
+    DashboardManagerial,
+    DashSelection
   },
   data() {
     return {
