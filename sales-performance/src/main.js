@@ -2,9 +2,22 @@ import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
-import HighchartsVue from 'highcharts-vue'
+import * as Highcharts from 'highcharts/highmaps';
+import HighchartsVue from 'highcharts-vue';
+import mapData from '@highcharts/map-collection/countries/br/br-all.geo.json';
 
-createApp(App)
-  .use(vuetify)
-  .use(HighchartsVue) // ⬅️ aqui adiciona o Highcharts
-  .mount('#app')
+Highcharts.setOptions({
+  lang: {
+    decimalPoint: ',',
+    thousandsSep: '.',
+    locale: 'pt-BR',
+    loading: 'Carregando...',
+    noData: 'Sem dados para exibir'
+  }
+});
+Highcharts.maps['countries/br/br-all'] = mapData;
+
+const app = createApp(App);
+app.use(vuetify);
+app.use(HighchartsVue, { highcharts: Highcharts })
+app.mount('#app');
