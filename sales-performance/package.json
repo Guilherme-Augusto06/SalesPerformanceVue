@@ -12,6 +12,7 @@
     "@mdi/font": "^7.4.47",
     "apexcharts": "^5.3.2",
     "highcharts": "^12.3.0",
+    "highcharts-vue": "^2.0.1",
     "vue": "^3.5.17",
     "vuetify": "^3.9.2"
   },

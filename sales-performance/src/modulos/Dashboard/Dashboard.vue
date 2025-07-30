@@ -82,14 +82,32 @@
       <v-col cols="12" md="8">
         <ApexBarAlternativeChart title="Top 10 Produtos Mais Vendidos"  />
       </v-col>
+      <v-col cols="6" sm="3" md="4">
+        <ApexAlternativeDonutChart title="Margem Bruta vs Margem Líquida"/>
+      </v-col>
+
     </v-row>
 
     <v-row class="mt-4">
       <v-col cols="12" md="8">
         <ApexAreaAlternativeChart title="Margem Bruta x Margem Líquida"/>
       </v-col>
+
     </v-row>
 
+    <v-row class="mt-4">
+      <v-col cols="12" md="8">
+        <ApexBarBasicChart title="Faturamento por região"/>
+      </v-col>
+              <v-col cols="6" sm="3" md="4">
+          <SimpleCard title="Ticket médio por cliente" :value="'R$ 1.200'" :color="'#fff'" icon="mdi-chart-line" colorIcon="black"/>
+      </v-col>
+    </v-row>
+
+    <v-row class="mt-4">
+      <v-col cols="12" md="8">
+      </v-col>
+    </v-row>
 
   </div>
   
@@ -104,6 +122,8 @@ import ApexBarAlternativeChart from '../../components/Dashboard/Embeeded/ApexBar
 import ApexAreaAlternativeChart from '../../components/Dashboard/Embeeded/ApexAreaAlternativeChart.vue';
 import ApexRadialChart from '../../components/Dashboard/Embeeded/ApexRadialChart.vue';
 import SimpleCard from '../../components/Dashboard/Embeeded/SimpleCard.vue';
+import ApexBarBasicChart from '../../components/Dashboard/Embeeded/ApexBarBasicChart.vue';
+import ApexAlternativeDonutChart from '../../components/Dashboard/Embeeded/ApexAlternativeDonutChart.vue';
 
 export default {
   name: 'Dashboard',
@@ -114,7 +134,9 @@ export default {
     ApexBarAlternativeChart,
     ApexAreaAlternativeChart,
     ApexRadialChart,
-    SimpleCard
+    SimpleCard,
+    ApexBarBasicChart,
+    ApexAlternativeDonutChart,
   },
   data() {
     return {

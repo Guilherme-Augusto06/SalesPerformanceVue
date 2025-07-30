@@ -5,11 +5,11 @@
       rounded="lg"
       :color="color"
     >
-      <v-icon size="48" color="black" class="mb-3">{{ icon || 'mdi-trending-up' }}</v-icon>
+      <v-icon size="48" :color="colorIcon" class="mb-3">{{ icon || 'mdi-trending-up' }}</v-icon>
       <h2 class="text-h4 font-weight-bold white--text mb-1">{{ value }}</h2>
       <p class="text-subtitle-2 white--text mb-2">{{ title }}</p>
       <v-chip small color="success" text-color="white" v-if="smallValue">
-        <v-icon small left>mdi-arrow-up</v-icon>
+        <v-icon small left color="white">mdi-arrow-up</v-icon>
         {{ smallValue }}
       </v-chip>
     </v-card>
@@ -38,7 +38,12 @@ export default {
         icon: {
             type: String,
             default: 'mdi-trending-up'
+        },
+        colorIcon: {
+            type: String,
+            default: '#fff'
         }
+
     }
 }
 </script>
