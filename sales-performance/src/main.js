@@ -5,6 +5,7 @@ import vuetify from './plugins/vuetify'
 import * as Highcharts from 'highcharts/highmaps';
 import HighchartsVue from 'highcharts-vue';
 import mapData from '@highcharts/map-collection/countries/br/br-all.geo.json';
+import router from './routes/router.js'
 
 Highcharts.setOptions({
   lang: {
@@ -18,6 +19,7 @@ Highcharts.setOptions({
 Highcharts.maps['countries/br/br-all'] = mapData;
 
 const app = createApp(App);
+app.use(router)
 app.use(vuetify);
 app.use(HighchartsVue, { highcharts: Highcharts })
 app.mount('#app');

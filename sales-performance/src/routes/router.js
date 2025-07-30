@@ -1,14 +1,14 @@
 // src/router/index.js
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
-import Sobre from '../views/Sobre.vue'
+import DashboardGerencial from '../modulos/Dashboard/DashboardGerencial.vue'
 
 const routes = [
-  { path: '/', component: Home },
-  { path: '/sobre', component: Sobre },
+  { path: '/', name: 'DashboardGerencial', component: DashboardGerencial },
 ]
 
-export default createRouter({
+const router = createRouter({
   history: createWebHistory(),
-  routes,
+  routes
 })
+
+export default router
