@@ -1,7 +1,7 @@
 <template>
   <v-card elevation="2" rounded="lg" class="pa-4">
     <v-card-title class="text-h6 font-weight-medium mb-3">
-      Vendas Totais
+      {{ title }}
     </v-card-title>
     <div id="apex-bar-chart"></div>
   </v-card>
@@ -12,6 +12,12 @@ export default {
   name: 'ApexBarChart',
   mounted() {
     this.renderChart();
+  },
+  props: {
+    title: {
+      type: String,
+      default: 'Vendas Totais'
+    },
   },
   methods: {
     renderChart() {
