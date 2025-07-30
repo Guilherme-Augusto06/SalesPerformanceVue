@@ -1,7 +1,7 @@
 <template>
   <v-card elevation="2" rounded="lg" class="pa-4">
     <v-card-title class="text-h6 font-weight-medium mb-3">
-      Top 10 Produtos Vendidos
+      {{ title }}
     </v-card-title>
     <div id="chart"></div>
   </v-card>
@@ -13,6 +13,12 @@ export default {
   name: 'ApexBarAlternativeChart',
   mounted() {
     this.renderChart();
+  },
+  props: {
+    title: {
+      type: String,
+      default: 'Top 10 Produtos Mais Vendidos'
+    },
   },
   methods: {
     renderChart() {

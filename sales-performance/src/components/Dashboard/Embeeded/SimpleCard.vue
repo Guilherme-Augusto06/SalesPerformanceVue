@@ -1,20 +1,18 @@
 <template>
-    <v-col cols="12" sm="6" md="4">
-        <v-card
-          class="text-center pa-4"
-          elevation="2"
-          rounded="lg"
-          :color="color"
-        >
-          <v-icon size="48" color="black" class="mb-3">mdi-trending-up</v-icon>
-          <h2 class="text-h4 font-weight-bold white--text mb-1">{{ value }}</h2>
-          <p class="text-subtitle-2 white--text mb-2">{{ title }}</p>
-          <v-chip small color="success" text-color="white">
-            <v-icon small left>mdi-arrow-up</v-icon>
-            {{ smallValue }}
-          </v-chip>
-        </v-card>
-    </v-col>
+    <v-card
+      class="text-center pa-4"
+      elevation="2"
+      rounded="lg"
+      :color="color"
+    >
+      <v-icon size="48" color="black" class="mb-3">{{ icon || 'mdi-trending-up' }}</v-icon>
+      <h2 class="text-h4 font-weight-bold white--text mb-1">{{ value }}</h2>
+      <p class="text-subtitle-2 white--text mb-2">{{ title }}</p>
+      <v-chip small color="success" text-color="white" v-if="smallValue">
+        <v-icon small left>mdi-arrow-up</v-icon>
+        {{ smallValue }}
+      </v-chip>
+    </v-card>
 </template>
 
 <script>
@@ -26,7 +24,7 @@ export default {
             required: true
         },
         value: {
-            type: Number,
+            type: [String, Number],
             required: true
         },
         smallValue: {
@@ -36,6 +34,10 @@ export default {
         color: {
             type: String,
             default: '#fff'
+        },
+        icon: {
+            type: String,
+            default: 'mdi-trending-up'
         }
     }
 }

@@ -1,7 +1,7 @@
 <template>
   <v-card elevation="2" rounded="lg" class="pa-4">
     <v-card-title class="text-h6 font-weight-medium mb-3">
-      Meta vs Realizado
+      {{ title }}
     </v-card-title>
     <div id="apex-donut-chart"></div>
   </v-card>
@@ -12,6 +12,12 @@ export default {
   name: 'ApexDonutChart',
   mounted() {
     this.renderChart();
+  },
+  props: {
+    title: {
+      type: String,
+      default: 'Meta vs Realizado'
+    },
   },
   methods: {
     renderChart() {
