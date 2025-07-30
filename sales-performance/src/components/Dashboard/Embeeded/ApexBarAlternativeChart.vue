@@ -1,0 +1,97 @@
+<template>
+  <v-card elevation="2" rounded="lg" class="pa-4">
+    <v-card-title class="text-h6 font-weight-medium mb-3">
+      Top 10 Produtos Vendidos
+    </v-card-title>
+    <div id="chart"></div>
+  </v-card>
+</template>
+
+
+<script>
+export default {
+  name: 'ApexBarAlternativeChart',
+  mounted() {
+    this.renderChart();
+  },
+  methods: {
+    renderChart() {
+      const options = {
+          series: [{
+          data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380]
+        }],
+          chart: {
+          type: 'bar',
+          height: 380
+        },
+        plotOptions: {
+          bar: {
+            barHeight: '100%',
+            distributed: true,
+            horizontal: true,
+            dataLabels: {
+              position: 'bottom'
+            },
+          }
+        },
+        colors: ['#33b2df', '#546E7A', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e',
+          '#f48024', '#69d2e7'
+        ],
+        dataLabels: {
+          enabled: true,
+          textAnchor: 'start',
+          style: {
+            colors: ['#fff']
+          },
+          formatter: function (val, opt) {
+            return opt.w.globals.labels[opt.dataPointIndex] + ":  " + val
+          },
+          offsetX: 0,
+          dropShadow: {
+            enabled: true
+          }
+        },
+        stroke: {
+          width: 1,
+          colors: ['#fff']
+        },
+        xaxis: {
+          categories: ['Produto 1', 'Produto 2', 'Produto 3', 'Produto 4', 'Produto 5', 'Produto 6', 'Produto 7',
+            'Produto 8', 'Produto 9', 'Produto 10'
+          ],
+        },
+        yaxis: {
+          labels: {
+            show: false
+          }
+        },
+        title: {
+            text: 'Top 10 Produtos Mais Vendidos',
+            align: 'center',
+            floating: true
+        },
+        subtitle: {
+            text: 'Ranking de produtos por volume de vendas',
+            align: 'center',
+        },
+        tooltip: {
+          theme: 'dark',
+          x: {
+            show: false
+          },
+          y: {
+            title: {
+              formatter: function () {
+                return ''
+              }
+            }
+          }
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    }
+  }
+};
+</script>
