@@ -3,7 +3,7 @@
     expand-on-hover
     permanent
     rail
-    color="primary"
+    color="grey-darken-4"
   >
     <v-list>
       <v-list-item
