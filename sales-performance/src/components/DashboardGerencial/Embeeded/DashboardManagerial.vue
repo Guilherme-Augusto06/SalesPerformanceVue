@@ -1,5 +1,23 @@
 <template>
   <div>
+        <div>
+      <h1 class="text-h3 font-weight-light text-primary mb-2">Dashboard</h1>
+      <p class="text-subtitle-1 text-grey">Sales Performance Overview</p>
+    </div>
+    <v-row class="mb-4">
+      <v-col cols="6" sm="3" md="3">
+        <SimpleCard title="Vendas Totais" :value="'R$ 2.450.000'" color="primary" icon="mdi-currency-usd"/>
+      </v-col>
+      <v-col cols="6" sm="3" md="3">
+        <SimpleCard title="Meta Mensal" :value="'R$ 1.800.000'" color="primary" icon="mdi-target"/>
+      </v-col>
+      <v-col cols="6" sm="3" md="3">
+        <SimpleCard title="Clientes Ativos" :value="'1.247'" color="primary" icon="mdi-account-group"/>
+      </v-col>
+      <v-col cols="6" sm="3" md="3">
+        <SimpleCard title="Produtos Vendidos" :value="'8.569'" color="primary" icon="mdi-package-variant"/>
+      </v-col>
+    </v-row>
     <v-row>
       <v-col cols="12" md="8">
         <ApexAreaChart title="Evolução de Vendas"/>

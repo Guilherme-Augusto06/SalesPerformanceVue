@@ -41,43 +41,35 @@
           </div>
         </v-expand-transition>
       </div>
-      <h1 class="text-h3 font-weight-light text-primary mb-2">Dashboard</h1>
-      <p class="text-subtitle-1 text-grey">Sales Performance Overview</p>
+
     </div>
 
-    <v-row class="mb-4">
-      <v-col cols="6" sm="3" md="3">
-        <SimpleCard title="Vendas Totais" :value="'R$ 2.450.000'" :color="'#1976d2'" icon="mdi-currency-usd"/>
-      </v-col>
-      <v-col cols="6" sm="3" md="3">
-        <SimpleCard title="Meta Mensal" :value="'R$ 1.800.000'" :color="'#388e3c'" icon="mdi-target"/>
-      </v-col>
-      <v-col cols="6" sm="3" md="3">
-        <SimpleCard title="Clientes Ativos" :value="'1.247'" :color="'#f57c00'" icon="mdi-account-group"/>
-      </v-col>
-      <v-col cols="6" sm="3" md="3">
-        <SimpleCard title="Produtos Vendidos" :value="'8.569'" :color="'#7b1fa2'" icon="mdi-package-variant"/>
-      </v-col>
-    </v-row>
+
     <DashboardManagerial />
+    <DashboardAnalisys />
+
     <DashSelection />
   </div>
 </template>
 <script>
 // Imports dos componentes utilizados no Dashboard
-import SimpleCard from '../../components/Dashboard/Embeeded/SimpleCard.vue';
-import DashboardManagerial from '../../components/Dashboard/Embeeded/DashboardManagerial.vue';
-import DashSelection from '../../components/Dashboard/Embeeded/DashSelection.vue';
+import SimpleCard from '../../components/DashboardGerencial/Embeeded/SimpleCard.vue';
+import DashboardManagerial from '../../components/DashboardGerencial/Embeeded/DashboardManagerial.vue';
+import DashSelection from '../../components/DashboardGerencial/Embeeded/DashSelection.vue';
+import DashboardAnalisys from '../../components/DashboardGerencial/Embeeded/DashboardAnalisys.vue';
 
 export default {
-  name: 'Dashboard',
+  name: 'DashboardGerencial',
   components: {
     SimpleCard,
     DashboardManagerial,
-    DashSelection
+    DashSelection,
+    DashboardAnalisys
   },
   data() {
     return {
+      selectDashboard: ['DashboardGerencial', 'DashboardAnalisys'],
+      buttonDashboard: 'DashboardGerencial',
       toggleFiltersVisible: false,
       selectedFilter: null,
       dateRange: {

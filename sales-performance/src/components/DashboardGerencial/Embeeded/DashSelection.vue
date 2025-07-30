@@ -1,5 +1,5 @@
 <template>
-    <div class="position-absolute position-fixed top-0 right-0 m-2 d-flex flex-column ga-6 mt-14 mr-2">
+    <div class="position-fixed top-0 right-0 m-2 d-flex flex-column ga-6 mt-14 mr-2" style="z-index: 1000;">
         <v-btn class="" color="primary" elevation="2" >
             <v-icon>mdi-view-dashboard</v-icon>
         </v-btn>

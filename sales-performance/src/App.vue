@@ -3,7 +3,7 @@
     <Navbar />
     <v-main>
       <v-container fluid class="pa-4">
-        <Dashboard />
+        <router-view />
       </v-container>
     </v-main>
   </v-app>
@@ -13,12 +13,12 @@
 
 <script>
 import Navbar from './components/Navbar.vue'
-import Dashboard from './modulos/Dashboard/Dashboard.vue'
+import DashboardGerencial from './modulos/Dashboard/DashboardGerencial.vue'
 export default {
   name: 'App',
   components: {
     Navbar,
-    Dashboard
+    DashboardGerencial
   }
 }
 
