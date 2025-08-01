@@ -2,7 +2,7 @@
   <div>
         <div>
       <h1 class="text-h3 font-weight-bold mb-2 text-red-darken-4" >Dashboard</h1>
-      <p class="text-subtitle-1 text-grey">Sales Performance Overview</p>
+      <p class="text-subtitle-1 text-grey">Análise por Produto</p>
     </div>
         <v-row class="mt-4">
       <v-col cols="12" md="12">
@@ -25,7 +25,7 @@
       </v-col>
 
     </v-row>
-    
+
     <v-row>
       <v-col cols="12" md="12">
         <ApexAreaChart

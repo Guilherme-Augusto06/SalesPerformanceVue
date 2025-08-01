@@ -1,8 +1,9 @@
 <template>
   <div>
         <div>
-      <h1 class="text-h3 font-weight-light text-primary mb-2">Dashboard</h1>
+      <h1 class="text-h3 font-weight-bold mb-2 text-primary">Dashboard</h1>
       <p class="text-subtitle-1 text-grey">Sales Performance Overview</p>
+      
     </div>
     <v-row class="mb-4">
       <v-col cols="6" sm="3" md="3">
@@ -42,7 +43,7 @@
       </v-col>
       <v-col cols="6" sm="3" md="4">
         <ApexAlternativeDonutChart title="Margem Bruta vs Margem Líquida" class="mb-6"/>
-          <SimpleCard title="Ticket médio por cliente" :value="'R$ 1.200'" :color="'#fff'" icon="mdi-chart-line" colorIcon="black"/>
+          <SimpleCard title="Ticket médio" :value="'R$ 1.200'" :color="'#fff'" icon="mdi-chart-line" colorIcon="black"/>
 
       </v-col>
 
