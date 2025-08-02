@@ -2,9 +2,9 @@
   <div>
     <div>
       <h1 class="text-h3 font-weight-bold mb-2 text-purple-darken-4">
-        Dashboard
+        Análise por Produto
       </h1>
-      <p class="text-subtitle-1 text-grey">Análise por Produto</p>
+      <p class="text-subtitle-1 text-grey">Dashboard</p>
     </div>
     <v-row class="mt-4">
       <v-col cols="12" md="6">
