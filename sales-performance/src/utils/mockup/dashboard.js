@@ -185,6 +185,103 @@ export const dashboardAnalysisByClientData = {
     gridOpacity: 0.2,
   },
 
+  // Dados para ApexAreaAlternativeChart - Comparação Real vs Meta
+  ComparacaoRealVsMeta: {
+    meses: [
+      "Jan",
+      "Fev",
+      "Mar",
+      "Abr",
+      "Mai",
+      "Jun",
+      "Jul",
+      "Ago",
+      "Set",
+      "Out",
+      "Nov",
+      "Dez",
+    ],
+    series: [
+      {
+        name: "Realizado",
+        data: [
+          485000, 512000, 468000, 525000, 498000, 545000, 518000, 562000,
+          535000, 578000, 551000, 595000,
+        ],
+      },
+      {
+        name: "Meta Estabelecida",
+        data: [
+          500000, 520000, 480000, 540000, 510000, 560000, 530000, 580000,
+          550000, 590000, 570000, 610000,
+        ],
+      },
+    ],
+    // Dados por cliente para filtro futuro
+    clientesData: {
+      "TransLog Brasil": {
+        vendas: [
+          485000, 512000, 468000, 525000, 498000, 545000, 518000, 562000,
+          535000, 578000, 551000, 595000,
+        ],
+        meta: [
+          500000, 520000, 480000, 540000, 510000, 560000, 530000, 580000,
+          550000, 590000, 570000, 610000,
+        ],
+      },
+      "Rodoviária Central": {
+        vendas: [
+          312000, 328000, 298000, 345000, 318000, 362000, 335000, 378000,
+          351000, 395000, 368000, 412000,
+        ],
+        meta: [
+          320000, 340000, 310000, 360000, 330000, 380000, 350000, 400000,
+          370000, 420000, 390000, 440000,
+        ],
+      },
+      "Frota Express": {
+        vendas: [
+          268000, 282000, 255000, 295000, 271000, 308000, 284000, 321000,
+          297000, 334000, 310000, 347000,
+        ],
+        meta: [
+          280000, 300000, 270000, 320000, 290000, 340000, 310000, 360000,
+          330000, 380000, 350000, 400000,
+        ],
+      },
+      "Transportes Unidos": {
+        vendas: [
+          185000, 198000, 172000, 211000, 187000, 224000, 201000, 237000,
+          214000, 250000, 227000, 263000,
+        ],
+        meta: [
+          200000, 210000, 190000, 230000, 210000, 250000, 230000, 270000,
+          250000, 290000, 270000, 310000,
+        ],
+      },
+      "Via Cargo": {
+        vendas: [
+          128000, 142000, 115000, 155000, 131000, 168000, 144000, 181000,
+          157000, 194000, 170000, 207000,
+        ],
+        meta: [
+          150000, 160000, 140000, 180000, 160000, 200000, 180000, 220000,
+          200000, 240000, 220000, 260000,
+        ],
+      },
+    },
+    chartHeight: 450,
+    colors: ["#00695c", "#d2df26ff"],
+    strokeCurve: "smooth",
+    strokeWidth: 3,
+    fillType: "gradient",
+    showDataLabels: false,
+    legendPosition: "top",
+    showGrid: true,
+    gridColors: ["#f0f0f0", "transparent"],
+    gridOpacity: 0.2,
+  },
+
   // Dados para ApexAreaAlternativeChart - Atingimento de Meta
   atingimentoMetaPorCanal: {
     meses: [
@@ -734,6 +831,7 @@ export const dashboardAnalysisByClientData = {
 
 // Exportação individual por componente para facilitar importação específica
 export const {
+  ComparacaoRealVsMeta,
   atingimentoMetaPorCanal,
   DesempenhoVendedor,
   ComissoesPagasEstimadas,
@@ -749,6 +847,193 @@ export const {
   itemsEmQueda,
   clientesInativos,
 } = dashboardAnalysisByClientData;
+
+// Dados para DataTable de Metas
+export const metasData = {
+  metas: [
+    {
+      id: 1,
+      mes: "Janeiro",
+      produto: "Notebook Dell Inspiron",
+      cliente: "TechCorp Solutions",
+      regiao: "Sul",
+      representante: "João Silva",
+      valorMeta: 150000,
+    },
+    {
+      id: 2,
+      mes: "Janeiro",
+      produto: "Monitor LG 24''",
+      cliente: "InfoTech Ltda",
+      regiao: "Sudeste",
+      representante: "Maria Santos",
+      valorMeta: 85000,
+    },
+    {
+      id: 3,
+      mes: "Fevereiro",
+      produto: "Impressora HP LaserJet",
+      cliente: "Office Express",
+      regiao: "Centro-Oeste",
+      representante: "Pedro Costa",
+      valorMeta: 120000,
+    },
+    {
+      id: 4,
+      mes: "Fevereiro",
+      produto: "Smartphone Samsung",
+      cliente: "Mobile World",
+      regiao: "Nordeste",
+      representante: "Ana Oliveira",
+      valorMeta: 200000,
+    },
+    {
+      id: 5,
+      mes: "Março",
+      produto: "Tablet iPad",
+      cliente: "Digital Store",
+      regiao: "Norte",
+      representante: "Carlos Ferreira",
+      valorMeta: 180000,
+    },
+    {
+      id: 6,
+      mes: "Março",
+      produto: "Teclado Mecânico",
+      cliente: "Gamer Zone",
+      regiao: "Sul",
+      representante: "João Silva",
+      valorMeta: 45000,
+    },
+    {
+      id: 7,
+      mes: "Abril",
+      produto: "Webcam Logitech",
+      cliente: "Stream Pro",
+      regiao: "Sudeste",
+      representante: "Maria Santos",
+      valorMeta: 65000,
+    },
+    {
+      id: 8,
+      mes: "Abril",
+      produto: "SSD Kingston 1TB",
+      cliente: "Hardware Plus",
+      regiao: "Centro-Oeste",
+      representante: "Pedro Costa",
+      valorMeta: 95000,
+    },
+    {
+      id: 9,
+      mes: "Maio",
+      produto: "Placa de Vídeo RTX",
+      cliente: "Gaming Masters",
+      regiao: "Nordeste",
+      representante: "Ana Oliveira",
+      valorMeta: 350000,
+    },
+    {
+      id: 10,
+      mes: "Maio",
+      produto: "Processador Intel i7",
+      cliente: "PC Builder",
+      regiao: "Norte",
+      representante: "Carlos Ferreira",
+      valorMeta: 280000,
+    },
+    {
+      id: 11,
+      mes: "Junho",
+      produto: "Mouse Gamer",
+      cliente: "Esports Arena",
+      regiao: "Sul",
+      representante: "João Silva",
+      valorMeta: 55000,
+    },
+    {
+      id: 12,
+      mes: "Junho",
+      produto: "Memória RAM 32GB",
+      cliente: "Server Solutions",
+      regiao: "Sudeste",
+      representante: "Maria Santos",
+      valorMeta: 140000,
+    },
+  ],
+
+  // Listas para os selects
+  opcoes: {
+    meses: [
+      "Janeiro",
+      "Fevereiro",
+      "Março",
+      "Abril",
+      "Maio",
+      "Junho",
+      "Julho",
+      "Agosto",
+      "Setembro",
+      "Outubro",
+      "Novembro",
+      "Dezembro",
+    ],
+    produtos: [
+      "Notebook Dell Inspiron",
+      "Monitor LG 24''",
+      "Impressora HP LaserJet",
+      "Smartphone Samsung",
+      "Tablet iPad",
+      "Teclado Mecânico",
+      "Webcam Logitech",
+      "SSD Kingston 1TB",
+      "Placa de Vídeo RTX",
+      "Processador Intel i7",
+      "Mouse Gamer",
+      "Memória RAM 32GB",
+    ],
+    clientes: [
+      "TechCorp Solutions",
+      "InfoTech Ltda",
+      "Office Express",
+      "Mobile World",
+      "Digital Store",
+      "Gamer Zone",
+      "Stream Pro",
+      "Hardware Plus",
+      "Gaming Masters",
+      "PC Builder",
+      "Esports Arena",
+      "Server Solutions",
+    ],
+    regioes: ["Norte", "Nordeste", "Centro-Oeste", "Sudeste", "Sul"],
+    representantes: [
+      "João Silva",
+      "Maria Santos",
+      "Pedro Costa",
+      "Ana Oliveira",
+      "Carlos Ferreira",
+    ],
+  },
+
+  // Configurações da tabela
+  configuracoes: {
+    headers: [
+      { title: "Mês", key: "mes" },
+      { title: "Produto", key: "produto" },
+      { title: "Cliente", key: "cliente" },
+      { title: "Região", key: "regiao" },
+      { title: "Representante", key: "representante" },
+      {
+        title: "Valor da Meta",
+        key: "valorMeta",
+        align: "end",
+      },
+      { title: "Ações", key: "actions", align: "end", sortable: false },
+    ],
+    itemsPerPage: 10,
+    showFooter: true,
+  },
+};
 
 // Exportação default
 export default dashboardAnalysisByClientData;

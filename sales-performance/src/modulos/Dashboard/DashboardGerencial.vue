@@ -110,6 +110,15 @@
         :active-dashboard="activeDashboard"
       />
     </div>
+    <div
+      v-if="activeDashboard === 'GoalsAndProjections'"
+      key="GoalsAndProjections-dashboard"
+    >
+      <DashboardGoalsAndProjections
+        key="GoalsAndProjections-component"
+        :active-dashboard="activeDashboard"
+      />
+    </div>
 
     <!-- Fallback para outros dashboards não implementados -->
     <div
@@ -119,6 +128,7 @@
           'analysis',
           'analysisByClient',
           'analysisByCanal',
+          'GoalsAndProjections',
         ].includes(activeDashboard)
       "
       class="pa-4"
@@ -175,9 +185,11 @@
       </v-btn>
       <v-btn
         class=""
-        :color="activeDashboard === 'ranking' ? 'teal-darken-3' : 'grey'"
+        :color="
+          activeDashboard === 'GoalsAndProjections' ? 'teal-darken-3' : 'grey'
+        "
         elevation="2"
-        @click="switchDashboard('ranking')"
+        @click="switchDashboard('GoalsAndProjections')"
       >
         <v-icon>mdi-podium-gold</v-icon>
       </v-btn>
@@ -207,6 +219,7 @@ import DashboardManagerial from "../../components/DashboardGerencial/Embeeded/Da
 import DashboardAnalysis from "../../components/DashboardGerencial/Embeeded/DashboardAnalysis.vue";
 import DashboardAnalysisByClient from "../../components/DashboardGerencial/Embeeded/DashboardAnalysisByClient.vue";
 import DashboardAnalysisByCanal from "../../components/DashboardGerencial/Embeeded/DashboardAnalysisByCanal.vue";
+import DashboardGoalsAndProjections from "../../components/DashboardGerencial/Embeeded/DashboardGoalsAndProjections.vue";
 
 export default {
   name: "DashboardGerencial",
@@ -216,11 +229,18 @@ export default {
     DashboardAnalysis,
     DashboardAnalysisByClient,
     DashboardAnalysisByCanal,
+    DashboardGoalsAndProjections,
   },
   data() {
     return {
       activeDashboard: "managerial", // Dashboard ativo por padrão
-      selectDashboard: ["DashboardGerencial", "DashboardAnalysis"],
+      selectDashboard: [
+        "DashboardGerencial",
+        "DashboardAnalysis",
+        "DashboardGoalsAndProjections",
+        "DashboardAnalysisByClient",
+        "DashboardAnalysisByCanal",
+      ],
       buttonDashboard: "DashboardGerencial",
       toggleFiltersVisible: false,
       selectedFilter: null,
@@ -237,7 +257,7 @@ export default {
         analysis: "#c62828", // red-darken-4
         analysisByClient: "#4a148c", // purple-darken-4
         analysisByCanal: "#311b92", // deep-purple-darken-4
-        ranking: "#00695c", // teal-darken-3
+        GoalsAndProjections: "#00695c", // teal-darken-3
         map: "#37474f", // blue-grey-darken-3
         trends: "#bf360c", // deep-orange-darken-4
       };
