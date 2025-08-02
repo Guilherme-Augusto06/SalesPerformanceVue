@@ -13,12 +13,58 @@ export const dashboardAnalysisByClientData = {
       "Logística Prime",
     ],
     values: [1250, 980, 875, 720, 650, 540, 420, 380],
+    goalValues: [1300, 1000, 900, 750, 700, 600, 500, 450],
     seriesName: "Volume de Vendas (Unidades)",
     chartHeight: 400,
     horizontal: false,
     primaryColor: "#4a148c",
     dataLabelFormat: "value",
     legendItems: ["Volume"],
+  },
+
+  // Dados para ApexBarChart - Comissções pagas vs estimadas
+  ComissoesPagasEstimadas: {
+    title: "Comissões estimadas",
+    categories: [
+      "TransLog Brasil",
+      "Rodoviária Central",
+      "Frota Express",
+      "Transportes Unidos",
+      "Via Cargo",
+      "RodoSul Ltda",
+      "TransNorte",
+      "Logística Prime",
+    ],
+    values: [1250.0, 980.0, 875.0, 720.0, 650.0, 540.0, 420.0, 380.0],
+    goalValues: [1300.0, 1000.0, 900.0, 750.0, 700.0, 600.0, 500.0, 450.0],
+    seriesName: "Comissões Pagas",
+    chartHeight: 400,
+    horizontal: false,
+    primaryColor: "#311b92",
+    dataLabelFormat: "value",
+    legendItems: ["Pagas", "Meta"],
+  },
+
+  // Dados para ApexBarChart - Desempenho por vendedor / representante
+  DesempenhoVendedor: {
+    title: "Desempenho por Vendedor",
+    categories: [
+      "TransLog Brasil",
+      "Rodoviária Central",
+      "Frota Express",
+      "Transportes Unidos",
+      "Via Cargo",
+      "RodoSul Ltda",
+      "TransNorte",
+      "Logística Prime",
+    ],
+    values: [8450.0, 7200.0, 6500.0, 5400.0, 4200.0, 3800.0, 3000.0, 2700.0],
+    seriesName: "Comissões Pagas",
+    chartHeight: 400,
+    horizontal: false,
+    primaryColor: "#311b92",
+    dataLabelFormat: "value",
+    legendItems: ["Vendas"],
   },
 
   // Dados para ApexBarChart - Ranking de Clientes Valor
@@ -43,6 +89,198 @@ export const dashboardAnalysisByClientData = {
     legendItems: ["Valor (R$)"],
   },
 
+  atingimentoMeta: {
+    meses: [
+      "Jan",
+      "Fev",
+      "Mar",
+      "Abr",
+      "Mai",
+      "Jun",
+      "Jul",
+      "Ago",
+      "Set",
+      "Out",
+      "Nov",
+      "Dez",
+    ],
+    series: [
+      {
+        name: "Vendas Realizadas",
+        data: [
+          485000, 512000, 468000, 525000, 498000, 545000, 518000, 562000,
+          535000, 578000, 551000, 595000,
+        ],
+      },
+      {
+        name: "Meta Estabelecida",
+        data: [
+          500000, 520000, 480000, 540000, 510000, 560000, 530000, 580000,
+          550000, 590000, 570000, 610000,
+        ],
+      },
+    ],
+    // Dados por cliente para filtro futuro
+    clientesData: {
+      "TransLog Brasil": {
+        vendas: [
+          485000, 512000, 468000, 525000, 498000, 545000, 518000, 562000,
+          535000, 578000, 551000, 595000,
+        ],
+        meta: [
+          500000, 520000, 480000, 540000, 510000, 560000, 530000, 580000,
+          550000, 590000, 570000, 610000,
+        ],
+      },
+      "Rodoviária Central": {
+        vendas: [
+          312000, 328000, 298000, 345000, 318000, 362000, 335000, 378000,
+          351000, 395000, 368000, 412000,
+        ],
+        meta: [
+          320000, 340000, 310000, 360000, 330000, 380000, 350000, 400000,
+          370000, 420000, 390000, 440000,
+        ],
+      },
+      "Frota Express": {
+        vendas: [
+          268000, 282000, 255000, 295000, 271000, 308000, 284000, 321000,
+          297000, 334000, 310000, 347000,
+        ],
+        meta: [
+          280000, 300000, 270000, 320000, 290000, 340000, 310000, 360000,
+          330000, 380000, 350000, 400000,
+        ],
+      },
+      "Transportes Unidos": {
+        vendas: [
+          185000, 198000, 172000, 211000, 187000, 224000, 201000, 237000,
+          214000, 250000, 227000, 263000,
+        ],
+        meta: [
+          200000, 210000, 190000, 230000, 210000, 250000, 230000, 270000,
+          250000, 290000, 270000, 310000,
+        ],
+      },
+      "Via Cargo": {
+        vendas: [
+          128000, 142000, 115000, 155000, 131000, 168000, 144000, 181000,
+          157000, 194000, 170000, 207000,
+        ],
+        meta: [
+          150000, 160000, 140000, 180000, 160000, 200000, 180000, 220000,
+          200000, 240000, 220000, 260000,
+        ],
+      },
+    },
+    chartHeight: 450,
+    colors: ["#4a148c", "#00C853"],
+    strokeCurve: "smooth",
+    strokeWidth: 3,
+    fillType: "gradient",
+    showDataLabels: false,
+    legendPosition: "top",
+    showGrid: true,
+    gridColors: ["#f0f0f0", "transparent"],
+    gridOpacity: 0.2,
+  },
+
+  // Dados para ApexAreaAlternativeChart - Atingimento de Meta
+  atingimentoMetaPorCanal: {
+    meses: [
+      "Jan",
+      "Fev",
+      "Mar",
+      "Abr",
+      "Mai",
+      "Jun",
+      "Jul",
+      "Ago",
+      "Set",
+      "Out",
+      "Nov",
+      "Dez",
+    ],
+    series: [
+      {
+        name: "Vendas por canal",
+        data: [
+          485000, 512000, 468000, 525000, 498000, 545000, 518000, 562000,
+          535000, 578000, 551000, 595000,
+        ],
+      },
+      {
+        name: "Meta Estabelecida",
+        data: [
+          500000, 520000, 480000, 540000, 510000, 560000, 530000, 580000,
+          550000, 590000, 570000, 610000,
+        ],
+      },
+    ],
+    // Dados por cliente para filtro futuro
+    clientesData: {
+      "TransLog Brasil": {
+        vendas: [
+          485000, 512000, 468000, 525000, 498000, 545000, 518000, 562000,
+          535000, 578000, 551000, 595000,
+        ],
+        meta: [
+          500000, 520000, 480000, 540000, 510000, 560000, 530000, 580000,
+          550000, 590000, 570000, 610000,
+        ],
+      },
+      "Rodoviária Central": {
+        vendas: [
+          312000, 328000, 298000, 345000, 318000, 362000, 335000, 378000,
+          351000, 395000, 368000, 412000,
+        ],
+        meta: [
+          320000, 340000, 310000, 360000, 330000, 380000, 350000, 400000,
+          370000, 420000, 390000, 440000,
+        ],
+      },
+      "Frota Express": {
+        vendas: [
+          268000, 282000, 255000, 295000, 271000, 308000, 284000, 321000,
+          297000, 334000, 310000, 347000,
+        ],
+        meta: [
+          280000, 300000, 270000, 320000, 290000, 340000, 310000, 360000,
+          330000, 380000, 350000, 400000,
+        ],
+      },
+      "Transportes Unidos": {
+        vendas: [
+          185000, 198000, 172000, 211000, 187000, 224000, 201000, 237000,
+          214000, 250000, 227000, 263000,
+        ],
+        meta: [
+          200000, 210000, 190000, 230000, 210000, 250000, 230000, 270000,
+          250000, 290000, 270000, 310000,
+        ],
+      },
+      "Via Cargo": {
+        vendas: [
+          128000, 142000, 115000, 155000, 131000, 168000, 144000, 181000,
+          157000, 194000, 170000, 207000,
+        ],
+        meta: [
+          150000, 160000, 140000, 180000, 160000, 200000, 180000, 220000,
+          200000, 240000, 220000, 260000,
+        ],
+      },
+    },
+    chartHeight: 450,
+    colors: ["#4a148c", "#00C853"],
+    strokeCurve: "smooth",
+    strokeWidth: 3,
+    fillType: "gradient",
+    showDataLabels: false,
+    legendPosition: "top",
+    showGrid: true,
+    gridColors: ["#f0f0f0", "transparent"],
+    gridOpacity: 0.2,
+  },
   // Dados para ApexAreaAlternativeChart - Atingimento de Meta
   atingimentoMeta: {
     meses: [
@@ -475,6 +713,10 @@ export const dashboardAnalysisByClientData = {
       "#70dee6", // Purple-darken-1
       "#e9e091", // Purple padrão
     ],
+    // Configurações de cores automáticas
+    autoColors: true,
+    colorScheme: "business",
+    colorSeed: "clientes-inativos",
     chartHeight: 400,
     chartType: "area",
     strokeCurve: "smooth",
@@ -492,6 +734,9 @@ export const dashboardAnalysisByClientData = {
 
 // Exportação individual por componente para facilitar importação específica
 export const {
+  atingimentoMetaPorCanal,
+  DesempenhoVendedor,
+  ComissoesPagasEstimadas,
   rankingClientesVolume,
   rankingClientesValor,
   rankingClientesVolumeAuto,

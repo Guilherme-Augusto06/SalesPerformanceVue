@@ -101,13 +101,25 @@
         :active-dashboard="activeDashboard"
       />
     </div>
+    <div
+      v-if="activeDashboard === 'analysisByCanal'"
+      key="analysisByCanal-dashboard"
+    >
+      <DashboardAnalysisByCanal
+        key="analysisByCanal-component"
+        :active-dashboard="activeDashboard"
+      />
+    </div>
 
     <!-- Fallback para outros dashboards não implementados -->
     <div
       v-show="
-        !['managerial', 'analysis', 'analysisByClient'].includes(
-          activeDashboard
-        )
+        ![
+          'managerial',
+          'analysis',
+          'analysisByClient',
+          'analysisByCanal',
+        ].includes(activeDashboard)
       "
       class="pa-4"
     >
@@ -151,9 +163,13 @@
       </v-btn>
       <v-btn
         class=""
-        :color="activeDashboard === 'filters' ? 'deep-purple-darken-4' : 'grey'"
+        :color="
+          activeDashboard === 'analysisByCanal'
+            ? 'deep-purple-darken-4'
+            : 'grey'
+        "
         elevation="2"
-        @click="switchDashboard('filters')"
+        @click="switchDashboard('analysisByCanal')"
       >
         <v-icon>mdi-table-filter</v-icon>
       </v-btn>
@@ -190,6 +206,7 @@ import SimpleCard from "../../components/DashboardGerencial/Embeeded/SimpleCard.
 import DashboardManagerial from "../../components/DashboardGerencial/Embeeded/DashboardManagerial.vue";
 import DashboardAnalysis from "../../components/DashboardGerencial/Embeeded/DashboardAnalysis.vue";
 import DashboardAnalysisByClient from "../../components/DashboardGerencial/Embeeded/DashboardAnalysisByClient.vue";
+import DashboardAnalysisByCanal from "../../components/DashboardGerencial/Embeeded/DashboardAnalysisByCanal.vue";
 
 export default {
   name: "DashboardGerencial",
@@ -198,6 +215,7 @@ export default {
     DashboardManagerial,
     DashboardAnalysis,
     DashboardAnalysisByClient,
+    DashboardAnalysisByCanal,
   },
   data() {
     return {
@@ -218,7 +236,7 @@ export default {
         managerial: "#1976d2", // primary (azul)
         analysis: "#c62828", // red-darken-4
         analysisByClient: "#4a148c", // purple-darken-4
-        filters: "#311b92", // deep-purple-darken-4
+        analysisByCanal: "#311b92", // deep-purple-darken-4
         ranking: "#00695c", // teal-darken-3
         map: "#37474f", // blue-grey-darken-3
         trends: "#bf360c", // deep-orange-darken-4
