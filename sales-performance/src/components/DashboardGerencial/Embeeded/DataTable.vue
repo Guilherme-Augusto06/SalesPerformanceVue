@@ -7,58 +7,6 @@
         :items="filteredMetas"
       >
         <template v-slot:top>
-          <v-card flat class="pa-4 mb-2">
-            <v-row>
-              <v-col cols="12" md="2">
-                <v-select
-                  v-model="filters.mes"
-                  :items="meses"
-                  label="Filtrar Mês"
-                  clearable
-                />
-              </v-col>
-              <v-col cols="12" md="2">
-                <v-combobox
-                  v-model="filters.produto"
-                  :items="opcoesMockup.produtos"
-                  label="Filtrar Produto"
-                  clearable
-                />
-              </v-col>
-              <v-col cols="12" md="2">
-                <v-combobox
-                  v-model="filters.cliente"
-                  :items="opcoesMockup.clientes"
-                  label="Filtrar Cliente"
-                  clearable
-                />
-              </v-col>
-              <v-col cols="12" md="2">
-                <v-select
-                  v-model="filters.regiao"
-                  :items="opcoesMockup.regioes"
-                  label="Filtrar Região"
-                  clearable
-                />
-              </v-col>
-              <v-col cols="12" md="2">
-                <v-select
-                  v-model="filters.representante"
-                  :items="opcoesMockup.representantes"
-                  label="Filtrar Representante"
-                  clearable
-                />
-              </v-col>
-              <v-col cols="12" md="2" class="d-flex align-center">
-                <v-btn
-                  icon="mdi-filter-remove"
-                  @click="resetFilters"
-                  variant="text"
-                />
-              </v-col>
-            </v-row>
-          </v-card>
-
           <v-toolbar flat class="bg-teal-darken-3">
             <v-toolbar-title>
               <v-icon color="white" icon="mdi-target" size="x-small" start />
@@ -73,15 +21,10 @@
               @click="add"
             />
           </v-toolbar>
-        </template>
+        </template> 
 
-        <template v-slot:item.valorMeta="{ item }">
-          <span class="font-weight-bold text-success">
-            {{ formatCurrency(item.valorMeta) }}
-          </span>
-        </template>
 
-        <template v-slot:item.actions="{ item }">
+        <template #[`item.actions`]="{ item }">
           <div class="d-flex ga-2 justify-end">
             <v-tooltip text="Editar meta">
               <template v-slot:activator="{ props }">
@@ -92,8 +35,8 @@
                   size="small"
                   @click="edit(item.id)"
                 />
-              </template>
-            </v-tooltip>
+              </template> 
+             </v-tooltip>
             <v-tooltip text="Excluir meta">
               <template v-slot:activator="{ props }">
                 <v-icon
@@ -133,7 +76,7 @@
                 v-model="formModel.mes"
                 :items="meses"
                 label="Mês"
-                :rules="[(v) => !!v || 'Mês é obrigatório']"
+                :rules="rules.campoObrigatorio"
                 required
               />
             </v-col>
@@ -142,7 +85,7 @@
                 v-model="formModel.produto"
                 :items="opcoesMockup.produtos"
                 label="Produto"
-                :rules="[(v) => !!v || 'Produto é obrigatório']"
+                :rules="rules.campoObrigatorio"
                 required
               />
             </v-col>
@@ -151,7 +94,7 @@
                 v-model="formModel.cliente"
                 :items="opcoesMockup.clientes"
                 label="Cliente"
-                :rules="[(v) => !!v || 'Cliente é obrigatório']"
+                :rules="rules.campoObrigatorio"
                 required
               />
             </v-col>
@@ -160,7 +103,7 @@
                 v-model="formModel.regiao"
                 :items="opcoesMockup.regioes"
                 label="Região"
-                :rules="[(v) => !!v || 'Região é obrigatória']"
+                :rules="rules.campoObrigatorio"
                 required
               />
             </v-col>
@@ -169,7 +112,7 @@
                 v-model="formModel.representante"
                 :items="opcoesMockup.representantes"
                 label="Representante"
-                :rules="[(v) => !!v || 'Representante é obrigatório']"
+                :rules="rules.campoObrigatorio"
                 required
               />
             </v-col>
@@ -212,6 +155,29 @@ import { metasData } from "../../../utils/mockup/dashboard.js";
 export default {
   data() {
     return {
+      headers: [{
+        title: "Mês",
+        key: "mes",
+      }, {
+        title: "Produto",
+        key: "produto",
+      }, {
+        title: "Cliente",
+        key: "cliente",
+      }, {
+        title: "Região",
+        key: "regiao",
+      }, {
+        title: "Representante",
+        key: "representante",
+      }, {
+        title: "Valor da Meta",
+        key: "valorMeta",
+      }, {
+        title: "Ações",
+        key: "actions",
+      }],
+
       // Dados do mockup
       meses: metasData.opcoes.meses,
       metas: [...metasData.metas],
@@ -235,6 +201,9 @@ export default {
         regiao: "",
         representante: "",
       },
+      rules: {
+        campoObrigatorio: [(v) => !!v || "Campo obrigatório"],
+      }
     };
   },
   computed: {

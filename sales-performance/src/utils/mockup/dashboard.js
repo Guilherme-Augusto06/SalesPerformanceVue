@@ -851,114 +851,89 @@ export const {
 // Dados para DataTable de Metas
 export const metasData = {
   metas: [
-    {
-      id: 1,
-      mes: "Janeiro",
-      produto: "Notebook Dell Inspiron",
-      cliente: "TechCorp Solutions",
-      regiao: "Sul",
-      representante: "João Silva",
-      valorMeta: 150000,
-    },
-    {
-      id: 2,
-      mes: "Janeiro",
-      produto: "Monitor LG 24''",
-      cliente: "InfoTech Ltda",
-      regiao: "Sudeste",
-      representante: "Maria Santos",
-      valorMeta: 85000,
-    },
-    {
-      id: 3,
-      mes: "Fevereiro",
-      produto: "Impressora HP LaserJet",
-      cliente: "Office Express",
-      regiao: "Centro-Oeste",
-      representante: "Pedro Costa",
-      valorMeta: 120000,
-    },
-    {
-      id: 4,
-      mes: "Fevereiro",
-      produto: "Smartphone Samsung",
-      cliente: "Mobile World",
-      regiao: "Nordeste",
-      representante: "Ana Oliveira",
-      valorMeta: 200000,
-    },
-    {
-      id: 5,
-      mes: "Março",
-      produto: "Tablet iPad",
-      cliente: "Digital Store",
-      regiao: "Norte",
-      representante: "Carlos Ferreira",
-      valorMeta: 180000,
-    },
-    {
-      id: 6,
-      mes: "Março",
-      produto: "Teclado Mecânico",
-      cliente: "Gamer Zone",
-      regiao: "Sul",
-      representante: "João Silva",
-      valorMeta: 45000,
-    },
-    {
-      id: 7,
-      mes: "Abril",
-      produto: "Webcam Logitech",
-      cliente: "Stream Pro",
-      regiao: "Sudeste",
-      representante: "Maria Santos",
-      valorMeta: 65000,
-    },
-    {
-      id: 8,
-      mes: "Abril",
-      produto: "SSD Kingston 1TB",
-      cliente: "Hardware Plus",
-      regiao: "Centro-Oeste",
-      representante: "Pedro Costa",
-      valorMeta: 95000,
-    },
-    {
-      id: 9,
-      mes: "Maio",
-      produto: "Placa de Vídeo RTX",
-      cliente: "Gaming Masters",
-      regiao: "Nordeste",
-      representante: "Ana Oliveira",
-      valorMeta: 350000,
-    },
-    {
-      id: 10,
-      mes: "Maio",
-      produto: "Processador Intel i7",
-      cliente: "PC Builder",
-      regiao: "Norte",
-      representante: "Carlos Ferreira",
-      valorMeta: 280000,
-    },
-    {
-      id: 11,
-      mes: "Junho",
-      produto: "Mouse Gamer",
-      cliente: "Esports Arena",
-      regiao: "Sul",
-      representante: "João Silva",
-      valorMeta: 55000,
-    },
-    {
-      id: 12,
-      mes: "Junho",
-      produto: "Memória RAM 32GB",
-      cliente: "Server Solutions",
-      regiao: "Sudeste",
-      representante: "Maria Santos",
-      valorMeta: 140000,
-    },
+    // Janeiro
+    { id: 1, mes: "Janeiro", produto: "Notebook Dell Inspiron", representante: "João Silva", regiao: "Sul", valorMeta: 120000 },
+    { id: 2, mes: "Janeiro", produto: "Monitor LG 24''", representante: "Maria Santos", regiao: "Sudeste", valorMeta: 135000 },
+    { id: 3, mes: "Janeiro", produto: "Impressora HP LaserJet", representante: "Pedro Costa", regiao: "Centro-Oeste", valorMeta: 110000 },
+    { id: 4, mes: "Janeiro", produto: "Smartphone Samsung", representante: "Ana Oliveira", regiao: "Nordeste", valorMeta: 125000 },
+    { id: 5, mes: "Janeiro", produto: "Tablet iPad", representante: "Carlos Ferreira", regiao: "Norte", valorMeta: 115000 },
+    
+    // Fevereiro
+    { id: 6, mes: "Fevereiro", produto: "Teclado Mecânico", representante: "João Silva", regiao: "Sul", valorMeta: 125000 },
+    { id: 7, mes: "Fevereiro", produto: "Webcam Logitech", representante: "Maria Santos", regiao: "Sudeste", valorMeta: 140000 },
+    { id: 8, mes: "Fevereiro", produto: "SSD Kingston 1TB", representante: "Pedro Costa", regiao: "Centro-Oeste", valorMeta: 115000 },
+    { id: 9, mes: "Fevereiro", produto: "Placa de Vídeo RTX", representante: "Ana Oliveira", regiao: "Nordeste", valorMeta: 130000 },
+    { id: 10, mes: "Fevereiro", produto: "Processador Intel i7", representante: "Carlos Ferreira", regiao: "Norte", valorMeta: 120000 },
+    
+    // Março
+    { id: 11, mes: "Março", produto: "Mouse Gamer", representante: "João Silva", regiao: "Sul", valorMeta: 130000 },
+    { id: 12, mes: "Março", produto: "Memória RAM 32GB", representante: "Maria Santos", regiao: "Sudeste", valorMeta: 145000 },
+    { id: 13, mes: "Março", produto: "Notebook Dell Inspiron", representante: "Pedro Costa", regiao: "Centro-Oeste", valorMeta: 120000 },
+    { id: 14, mes: "Março", produto: "Monitor LG 24''", representante: "Ana Oliveira", regiao: "Nordeste", valorMeta: 135000 },
+    { id: 15, mes: "Março", produto: "Impressora HP LaserJet", representante: "Carlos Ferreira", regiao: "Norte", valorMeta: 125000 },
+    
+    // Abril
+    { id: 16, mes: "Abril", produto: "Smartphone Samsung", representante: "João Silva", regiao: "Sul", valorMeta: 135000 },
+    { id: 17, mes: "Abril", produto: "Tablet iPad", representante: "Maria Santos", regiao: "Sudeste", valorMeta: 150000 },
+    { id: 18, mes: "Abril", produto: "Teclado Mecânico", representante: "Pedro Costa", regiao: "Centro-Oeste", valorMeta: 125000 },
+    { id: 19, mes: "Abril", produto: "Webcam Logitech", representante: "Ana Oliveira", regiao: "Nordeste", valorMeta: 140000 },
+    { id: 20, mes: "Abril", produto: "SSD Kingston 1TB", representante: "Carlos Ferreira", regiao: "Norte", valorMeta: 130000 },
+    
+    // Maio
+    { id: 21, mes: "Maio", produto: "Placa de Vídeo RTX", representante: "João Silva", regiao: "Sul", valorMeta: 140000 },
+    { id: 22, mes: "Maio", produto: "Processador Intel i7", representante: "Maria Santos", regiao: "Sudeste", valorMeta: 155000 },
+    { id: 23, mes: "Maio", produto: "Mouse Gamer", representante: "Pedro Costa", regiao: "Centro-Oeste", valorMeta: 130000 },
+    { id: 24, mes: "Maio", produto: "Memória RAM 32GB", representante: "Ana Oliveira", regiao: "Nordeste", valorMeta: 145000 },
+    { id: 25, mes: "Maio", produto: "Notebook Dell Inspiron", representante: "Carlos Ferreira", regiao: "Norte", valorMeta: 135000 },
+    
+    // Junho
+    { id: 26, mes: "Junho", produto: "Monitor LG 24''", representante: "João Silva", regiao: "Sul", valorMeta: 145000 },
+    { id: 27, mes: "Junho", produto: "Impressora HP LaserJet", representante: "Maria Santos", regiao: "Sudeste", valorMeta: 160000 },
+    { id: 28, mes: "Junho", produto: "Smartphone Samsung", representante: "Pedro Costa", regiao: "Centro-Oeste", valorMeta: 135000 },
+    { id: 29, mes: "Junho", produto: "Tablet iPad", representante: "Ana Oliveira", regiao: "Nordeste", valorMeta: 150000 },
+    { id: 30, mes: "Junho", produto: "Teclado Mecânico", representante: "Carlos Ferreira", regiao: "Norte", valorMeta: 140000 },
+    
+    // Julho
+    { id: 31, mes: "Julho", produto: "Webcam Logitech", representante: "João Silva", regiao: "Sul", valorMeta: 150000 },
+    { id: 32, mes: "Julho", produto: "SSD Kingston 1TB", representante: "Maria Santos", regiao: "Sudeste", valorMeta: 165000 },
+    { id: 33, mes: "Julho", produto: "Placa de Vídeo RTX", representante: "Pedro Costa", regiao: "Centro-Oeste", valorMeta: 140000 },
+    { id: 34, mes: "Julho", produto: "Processador Intel i7", representante: "Ana Oliveira", regiao: "Nordeste", valorMeta: 155000 },
+    { id: 35, mes: "Julho", produto: "Mouse Gamer", representante: "Carlos Ferreira", regiao: "Norte", valorMeta: 145000 },
+    
+    // Agosto
+    { id: 36, mes: "Agosto", produto: "Memória RAM 32GB", representante: "João Silva", regiao: "Sul", valorMeta: 155000 },
+    { id: 37, mes: "Agosto", produto: "Notebook Dell Inspiron", representante: "Maria Santos", regiao: "Sudeste", valorMeta: 170000 },
+    { id: 38, mes: "Agosto", produto: "Monitor LG 24''", representante: "Pedro Costa", regiao: "Centro-Oeste", valorMeta: 145000 },
+    { id: 39, mes: "Agosto", produto: "Impressora HP LaserJet", representante: "Ana Oliveira", regiao: "Nordeste", valorMeta: 160000 },
+    { id: 40, mes: "Agosto", produto: "Smartphone Samsung", representante: "Carlos Ferreira", regiao: "Norte", valorMeta: 150000 },
+    
+    // Setembro
+    { id: 41, mes: "Setembro", produto: "Tablet iPad", representante: "João Silva", regiao: "Sul", valorMeta: 160000 },
+    { id: 42, mes: "Setembro", produto: "Teclado Mecânico", representante: "Maria Santos", regiao: "Sudeste", valorMeta: 175000 },
+    { id: 43, mes: "Setembro", produto: "Webcam Logitech", representante: "Pedro Costa", regiao: "Centro-Oeste", valorMeta: 150000 },
+    { id: 44, mes: "Setembro", produto: "SSD Kingston 1TB", representante: "Ana Oliveira", regiao: "Nordeste", valorMeta: 165000 },
+    { id: 45, mes: "Setembro", produto: "Placa de Vídeo RTX", representante: "Carlos Ferreira", regiao: "Norte", valorMeta: 155000 },
+    
+    // Outubro
+    { id: 46, mes: "Outubro", produto: "Processador Intel i7", representante: "João Silva", regiao: "Sul", valorMeta: 165000 },
+    { id: 47, mes: "Outubro", produto: "Mouse Gamer", representante: "Maria Santos", regiao: "Sudeste", valorMeta: 180000 },
+    { id: 48, mes: "Outubro", produto: "Memória RAM 32GB", representante: "Pedro Costa", regiao: "Centro-Oeste", valorMeta: 155000 },
+    { id: 49, mes: "Outubro", produto: "Notebook Dell Inspiron", representante: "Ana Oliveira", regiao: "Nordeste", valorMeta: 170000 },
+    { id: 50, mes: "Outubro", produto: "Monitor LG 24''", representante: "Carlos Ferreira", regiao: "Norte", valorMeta: 160000 },
+    
+    // Novembro
+    { id: 51, mes: "Novembro", produto: "Impressora HP LaserJet", representante: "João Silva", regiao: "Sul", valorMeta: 170000 },
+    { id: 52, mes: "Novembro", produto: "Smartphone Samsung", representante: "Maria Santos", regiao: "Sudeste", valorMeta: 185000 },
+    { id: 53, mes: "Novembro", produto: "Tablet iPad", representante: "Pedro Costa", regiao: "Centro-Oeste", valorMeta: 160000 },
+    { id: 54, mes: "Novembro", produto: "Teclado Mecânico", representante: "Ana Oliveira", regiao: "Nordeste", valorMeta: 175000 },
+    { id: 55, mes: "Novembro", produto: "Webcam Logitech", representante: "Carlos Ferreira", regiao: "Norte", valorMeta: 165000 },
+    
+    // Dezembro
+    { id: 56, mes: "Dezembro", produto: "SSD Kingston 1TB", representante: "João Silva", regiao: "Sul", valorMeta: 175000 },
+    { id: 57, mes: "Dezembro", produto: "Placa de Vídeo RTX", representante: "Maria Santos", regiao: "Sudeste", valorMeta: 190000 },
+    { id: 58, mes: "Dezembro", produto: "Processador Intel i7", representante: "Pedro Costa", regiao: "Centro-Oeste", valorMeta: 165000 },
+    { id: 59, mes: "Dezembro", produto: "Mouse Gamer", representante: "Ana Oliveira", regiao: "Nordeste", valorMeta: 180000 },
+    { id: 60, mes: "Dezembro", produto: "Memória RAM 32GB", representante: "Carlos Ferreira", regiao: "Norte", valorMeta: 170000 },
   ],
 
   // Listas para os selects
@@ -1020,9 +995,8 @@ export const metasData = {
     headers: [
       { title: "Mês", key: "mes" },
       { title: "Produto", key: "produto" },
-      { title: "Cliente", key: "cliente" },
-      { title: "Região", key: "regiao" },
       { title: "Representante", key: "representante" },
+      { title: "Região", key: "regiao" },
       {
         title: "Valor da Meta",
         key: "valorMeta",
