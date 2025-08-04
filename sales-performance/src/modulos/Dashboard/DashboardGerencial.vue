@@ -142,6 +142,15 @@
         :active-dashboard="activeDashboard"
       />
     </div>
+    <div
+      v-if="activeDashboard === 'AnalysisByRegion'"
+      key="AnalysisByRegion-dashboard"
+    >
+      <DashboardAnalysisByRegion
+        key="AnalysisByRegion-component"
+        :active-dashboard="activeDashboard"
+      />
+    </div>
 
     <!-- Fallback para outros dashboards não implementados -->
     <div
@@ -152,6 +161,7 @@
           'analysisByClient',
           'analysisByCanal',
           'GoalsAndProjections',
+          'AnalysisByRegion',
         ].includes(activeDashboard)
       "
       class="pa-4"
@@ -218,9 +228,11 @@
       </v-btn>
       <v-btn
         class=""
-        :color="activeDashboard === 'map' ? 'blue-grey-darken-3' : 'grey'"
+        :color="
+          activeDashboard === 'AnalysisByRegion' ? 'blue-grey-darken-3' : 'grey'
+        "
         elevation="2"
-        @click="switchDashboard('map')"
+        @click="switchDashboard('AnalysisByRegion')"
       >
         <v-icon>mdi-map</v-icon>
       </v-btn>
@@ -243,6 +255,7 @@ import DashboardAnalysis from "../../components/AnalisePorProduto/DashboardAnaly
 import DashboardAnalysisByClient from "../../components/AnalisePorCliente/DashboardAnalysisByClient.vue";
 import DashboardAnalysisByCanal from "../../components/AnalisePorRepresentante/DashboardAnalysisByCanal.vue";
 import DashboardGoalsAndProjections from "../../components/MetasProjecoes/DashboardGoalsAndProjections.vue";
+import DashboardAnalysisByRegion from "../../components/AnaliseRegional/DashboardAnalysisByRegion.vue";
 import { shallowRef } from "vue";
 
 export default {
@@ -254,6 +267,7 @@ export default {
     DashboardAnalysisByClient,
     DashboardAnalysisByCanal,
     DashboardGoalsAndProjections,
+    DashboardAnalysisByRegion,
   },
   data() {
     return {
@@ -265,6 +279,7 @@ export default {
         "DashboardGoalsAndProjections",
         "DashboardAnalysisByClient",
         "DashboardAnalysisByCanal",
+        "DashboardAnalysisByRegion",
       ],
       buttonDashboard: "DashboardGerencial",
       toggleFiltersVisible: false,
@@ -344,7 +359,7 @@ export default {
         analysisByClient: "#4a148c", // purple-darken-4
         analysisByCanal: "#311b92", // deep-purple-darken-4
         GoalsAndProjections: "#00695c", // teal-darken-3
-        map: "#37474f", // blue-grey-darken-3
+        AnalysisByRegion: "#37474f", // blue-grey-darken-3
         trends: "#bf360c", // deep-orange-darken-4
       };
       return colorMap[this.activeDashboard] || "#757575"; // grey como fallback
