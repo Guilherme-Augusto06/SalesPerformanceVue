@@ -151,6 +151,15 @@
         :active-dashboard="activeDashboard"
       />
     </div>
+    <div
+      v-if="activeDashboard === 'AnalysisByOrders'"
+      key="AnalysisByOrders-dashboard"
+    >
+      <DashboardAnalysisByOrders
+        key="AnalysisByOrders-component"
+        :active-dashboard="activeDashboard"
+      />
+    </div>
 
     <!-- Fallback para outros dashboards não implementados -->
     <div
@@ -162,6 +171,7 @@
           'analysisByCanal',
           'GoalsAndProjections',
           'AnalysisByRegion',
+          'AnalysisByOrders',
         ].includes(activeDashboard)
       "
       class="pa-4"
@@ -238,9 +248,13 @@
       </v-btn>
       <v-btn
         class=""
-        :color="activeDashboard === 'trends' ? 'deep-orange-darken-4' : 'grey'"
+        :color="
+          activeDashboard === 'AnalysisByOrders'
+            ? 'deep-orange-darken-4'
+            : 'grey'
+        "
         elevation="2"
-        @click="switchDashboard('trends')"
+        @click="switchDashboard('AnalysisByOrders')"
       >
         <v-icon>mdi-sine-wave</v-icon>
       </v-btn>
@@ -257,6 +271,7 @@ import DashboardAnalysisByCanal from "../../components/AnalisePorRepresentante/D
 import DashboardGoalsAndProjections from "../../components/MetasProjecoes/DashboardGoalsAndProjections.vue";
 import DashboardAnalysisByRegion from "../../components/AnaliseRegional/DashboardAnalysisByRegion.vue";
 import { shallowRef } from "vue";
+import DashboardAnalysisByOrders from "../../components/AnaliseDePedidos/DashboardAnalysisByOrders.vue";
 
 export default {
   name: "DashboardGerencial",
@@ -268,6 +283,7 @@ export default {
     DashboardAnalysisByCanal,
     DashboardGoalsAndProjections,
     DashboardAnalysisByRegion,
+    DashboardAnalysisByOrders,
   },
   data() {
     return {
@@ -360,7 +376,7 @@ export default {
         analysisByCanal: "#311b92", // deep-purple-darken-4
         GoalsAndProjections: "#00695c", // teal-darken-3
         AnalysisByRegion: "#37474f", // blue-grey-darken-3
-        trends: "#bf360c", // deep-orange-darken-4
+        AnalysisByOrders: "#E65100", // orange-darken-4
       };
       return colorMap[this.activeDashboard] || "#757575"; // grey como fallback
     },
