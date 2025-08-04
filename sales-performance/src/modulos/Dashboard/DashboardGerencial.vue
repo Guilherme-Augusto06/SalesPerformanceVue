@@ -34,48 +34,59 @@
           >
         </div>
         <v-expand-transition>
-          <div
-            v-if="toggleFiltersVisible"
-            class="pa-4 bg-grey-lighten-5 rounded"
-          >
-            <v-row>
-              <v-col cols="12" md="6">
-                <div class="mb-4">
-                  <label class="text-subtitle-2 mb-2 d-block">Período:</label>
-                  <div class="d-flex ga-2">
-                    <v-text-field
-                      v-model="dateRange.from"
-                      label="Data Inicial"
-                      type="date"
-                      variant="outlined"
-                      density="compact"
-                    />
-                    <v-text-field
-                      v-model="dateRange.to"
-                      label="Data Final"
-                      type="date"
-                      variant="outlined"
-                      density="compact"
-                    />
-                  </div>
-                </div>
-              </v-col>
+          <div v-if="toggleFiltersVisible">
+            <v-row class="pa-4">
+              <v-row>
+                <v-col cols="12" md="2" class="d-flex align-center">
+                  <v-date-input
+                    v-model="model"
+                    label="Selecionar período"
+                    max-width="368"
+                    multiple="range"
+                  ></v-date-input>
+                </v-col>
+                <v-col cols="12" md="2">
+                  <v-select
+                    v-model="filters.mes"
+                    :items="meses"
+                    label="Filtrar Mês"
+                    clearable
+                  />
+                </v-col>
+                <v-col cols="12" md="2">
+                  <v-combobox
+                    v-model="filters.produto"
+                    :items="opcoesMockup.produtos"
+                    label="Filtrar Produto"
+                    clearable
+                  />
+                </v-col>
+                <v-col cols="12" md="2">
+                  <v-combobox
+                    v-model="filters.cliente"
+                    :items="opcoesMockup.clientes"
+                    label="Filtrar Cliente"
+                    clearable
+                  />
+                </v-col>
+                <v-col cols="12" md="2">
+                  <v-select
+                    v-model="filters.regiao"
+                    :items="opcoesMockup.regioes"
+                    label="Filtrar Região"
+                    clearable
+                  />
+                </v-col>
+                <v-col cols="12" md="2">
+                  <v-select
+                    v-model="filters.representante"
+                    :items="opcoesMockup.representantes"
+                    label="Filtrar Representante"
+                    clearable
+                  />
+                </v-col>
+              </v-row>
             </v-row>
-            <div class="d-flex ga-2">
-              <v-btn
-                color="success"
-                class="font-weight-bold"
-                @click="applyFilters"
-                >Aplicar Filtros</v-btn
-              >
-              <v-btn
-                color="grey"
-                variant="outlined"
-                class="font-weight-bold"
-                @click="clearFilters"
-                >Limpar</v-btn
-              >
-            </div>
           </div>
         </v-expand-transition>
       </div>
@@ -220,6 +231,7 @@ import DashboardAnalysis from "../../components/DashboardGerencial/Embeeded/Dash
 import DashboardAnalysisByClient from "../../components/DashboardGerencial/Embeeded/DashboardAnalysisByClient.vue";
 import DashboardAnalysisByCanal from "../../components/DashboardGerencial/Embeeded/DashboardAnalysisByCanal.vue";
 import DashboardGoalsAndProjections from "../../components/DashboardGerencial/Embeeded/DashboardGoalsAndProjections.vue";
+import { shallowRef } from "vue";
 
 export default {
   name: "DashboardGerencial",
@@ -233,6 +245,7 @@ export default {
   },
   data() {
     return {
+      model: null,
       activeDashboard: "managerial", // Dashboard ativo por padrão
       selectDashboard: [
         "DashboardGerencial",
@@ -247,6 +260,67 @@ export default {
       dateRange: {
         from: "2024-01-01",
         to: "2024-12-31",
+      },
+      // Filtros dos dashboards
+      filters: {
+        mes: null,
+        produto: null,
+        cliente: null,
+        regiao: null,
+        representante: null,
+      },
+      // Opções para os filtros
+      meses: [
+        "Janeiro",
+        "Fevereiro",
+        "Março",
+        "Abril",
+        "Maio",
+        "Junho",
+        "Julho",
+        "Agosto",
+        "Setembro",
+        "Outubro",
+        "Novembro",
+        "Dezembro",
+      ],
+      opcoesMockup: {
+        produtos: [
+          "Notebook Dell Inspiron",
+          "Monitor LG 24''",
+          "Impressora HP LaserJet",
+          "Smartphone Samsung",
+          "Tablet iPad",
+          "Teclado Mecânico",
+          "Webcam Logitech",
+          "SSD Kingston 1TB",
+          "Placa de Vídeo RTX",
+          "Processador Intel i7",
+          "Mouse Gamer",
+          "Memória RAM 32GB",
+        ],
+        clientes: [
+          "TechCorp Solutions",
+          "InfoTech Ltda",
+          "Office Express",
+          "Mobile World",
+          "Digital Store",
+          "Gamer Zone",
+          "Stream Pro",
+          "Hardware Plus",
+          "Gaming Masters",
+          "PC Builder",
+          "Esports Arena",
+          "Server Solutions",
+        ],
+        regioes: ["Norte", "Nordeste", "Centro-Oeste", "Sudeste", "Sul"],
+        representantes: [
+          "João Silva",
+          "Maria Santos",
+          "Pedro Costa",
+          "Ana Oliveira",
+          "Carlos Ferreira",
+        ],
       },
     };
   },
@@ -283,6 +357,7 @@ export default {
       console.log("Filtros aplicados:", {
         filter: this.selectedFilter,
         dateRange: this.dateRange,
+        filters: this.filters,
       });
       //
     },
@@ -291,6 +366,16 @@ export default {
       this.dateRange = {
         from: "2024-01-01",
         to: "2024-12-31",
+      };
+      this.resetFilters();
+    },
+    resetFilters() {
+      this.filters = {
+        mes: null,
+        produto: null,
+        cliente: null,
+        regiao: null,
+        representante: null,
       };
     },
   },
