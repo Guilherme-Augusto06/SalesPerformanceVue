@@ -82,16 +82,16 @@
   </div>
 </template>
 <script>
-import ApexAreaChart from "./ApexAreaChart.vue";
-import ApexDonutChart from "./ApexDonutChart.vue";
-import ApexBarChart from "./ApexBarChart.vue";
-import ApexBarAlternativeChart from "./ApexBarAlternativeChart.vue";
-import ApexAreaAlternativeChart from "./ApexAreaAlternativeChart.vue";
-import ApexRadialChart from "./ApexRadialChart.vue";
-import ApexBarBasicChart from "./ApexBarBasicChart.vue";
-import ApexAlternativeDonutChart from "./ApexAlternativeDonutChart.vue";
-import MapDrilldown from "./MapDrilldown.vue";
-import SimpleCard from "./SimpleCard.vue";
+import ApexAreaChart from "../Scaffold/ApexAreaChart.vue";
+import ApexDonutChart from "../Scaffold/ApexDonutChart.vue";
+import ApexBarChart from "../Scaffold/ApexBarChart.vue";
+import ApexBarAlternativeChart from "../Scaffold/ApexBarAlternativeChart.vue";
+import ApexAreaAlternativeChart from "../Scaffold/ApexAreaAlternativeChart.vue";
+import ApexRadialChart from "../Scaffold/ApexRadialChart.vue";
+import ApexBarBasicChart from "../Scaffold/ApexBarBasicChart.vue";
+import ApexAlternativeDonutChart from "../Scaffold/ApexAlternativeDonutChart.vue";
+import MapDrilldown from "../Scaffold/MapDrilldown.vue";
+import SimpleCard from "../DashboardGerencial/Embeeded/SimpleCard.vue";
 
 export default {
   name: "DashboardAnalysis",

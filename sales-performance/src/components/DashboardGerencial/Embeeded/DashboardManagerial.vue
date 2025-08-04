@@ -77,7 +77,7 @@
 
     <v-row class="mt-4">
       <v-col cols="12" md="8">
-        <ApexAreaAlternativeChart title="Margem Bruta x Margem Líquida" />
+        <ApexAreaAlternativeChart title="Análise de Tendências" />
       </v-col>
       <v-col cols="6" sm="3" md="4">
         <MapDrilldown />
@@ -95,15 +95,15 @@
   </div>
 </template>
 <script>
-import ApexAreaChart from "./ApexAreaChart.vue";
-import ApexDonutChart from "./ApexDonutChart.vue";
-import ApexBarChart from "./ApexBarChart.vue";
-import ApexBarAlternativeChart from "./ApexBarAlternativeChart.vue";
-import ApexAreaAlternativeChart from "./ApexAreaAlternativeChart.vue";
-import ApexRadialChart from "./ApexRadialChart.vue";
-import ApexBarBasicChart from "./ApexBarBasicChart.vue";
-import ApexAlternativeDonutChart from "./ApexAlternativeDonutChart.vue";
-import MapDrilldown from "./MapDrilldown.vue";
+import ApexAreaChart from "../../Scaffold/ApexAreaChart.vue";
+import ApexDonutChart from "../../Scaffold/ApexDonutChart.vue";
+import ApexBarChart from "../../Scaffold/ApexBarChart.vue";
+import ApexBarAlternativeChart from "../../Scaffold/ApexBarAlternativeChart.vue";
+import ApexAreaAlternativeChart from "../../Scaffold/ApexAreaAlternativeChart.vue";
+import ApexRadialChart from "../../Scaffold/ApexRadialChart.vue";
+import ApexBarBasicChart from "../../Scaffold/ApexBarBasicChart.vue";
+import ApexAlternativeDonutChart from "../../Scaffold/ApexAlternativeDonutChart.vue";
+import MapDrilldown from "../../Scaffold/MapDrilldown.vue";
 import SimpleCard from "./SimpleCard.vue";
 
 export default {

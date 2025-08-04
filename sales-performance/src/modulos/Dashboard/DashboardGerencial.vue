@@ -30,7 +30,9 @@
             rounded="xl"
             class="font-weight-bold"
             @click="toggleFilters"
-            >Mostrar filtros</v-btn
+            >{{
+              toggleFiltersVisible ? "Ocultar filtros" : "Mostrar filtros"
+            }}</v-btn
           >
         </div>
         <v-expand-transition>
@@ -84,6 +86,16 @@
                     label="Filtrar Representante"
                     clearable
                   />
+                </v-col>
+                <v-col cols="12" md="2">
+                  <v-btn
+                    class="mt-4 font-weight-bold"
+                    color="black"
+                    variant="tonal"
+                    rounded="xl"
+                    @click="applyFilters"
+                    >Aplicar Filtros</v-btn
+                  >
                 </v-col>
               </v-row>
             </v-row>
@@ -227,10 +239,10 @@
 // Imports dos componentes utilizados no Dashboard
 import SimpleCard from "../../components/DashboardGerencial/Embeeded/SimpleCard.vue";
 import DashboardManagerial from "../../components/DashboardGerencial/Embeeded/DashboardManagerial.vue";
-import DashboardAnalysis from "../../components/DashboardGerencial/Embeeded/DashboardAnalysis.vue";
-import DashboardAnalysisByClient from "../../components/DashboardGerencial/Embeeded/DashboardAnalysisByClient.vue";
-import DashboardAnalysisByCanal from "../../components/DashboardGerencial/Embeeded/DashboardAnalysisByCanal.vue";
-import DashboardGoalsAndProjections from "../../components/DashboardGerencial/Embeeded/DashboardGoalsAndProjections.vue";
+import DashboardAnalysis from "../../components/AnalisePorProduto/DashboardAnalysis.vue";
+import DashboardAnalysisByClient from "../../components/AnalisePorCliente/DashboardAnalysisByClient.vue";
+import DashboardAnalysisByCanal from "../../components/AnalisePorRepresentante/DashboardAnalysisByCanal.vue";
+import DashboardGoalsAndProjections from "../../components/MetasProjecoes/DashboardGoalsAndProjections.vue";
 import { shallowRef } from "vue";
 
 export default {

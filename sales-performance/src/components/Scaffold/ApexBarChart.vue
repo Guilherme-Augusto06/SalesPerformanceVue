@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { ColorGenerator, ColorMixin } from "../../../utils/colorGenerator.js";
+import { ColorGenerator, ColorMixin } from "../../utils/colorGenerator.js";
 
 export default {
   name: "ApexBarChart",
