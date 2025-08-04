@@ -1115,6 +1115,319 @@ export const mapDrilldownData = {
   },
 };
 
+// Dados para ApexStackedBarChart - Gráficos de Barras Empilhadas
+export const stackedBarChartData = {
+  // Vendas por Categoria de Produto
+  vendasPorCategoria: {
+    title: "Vendas por Categoria de Produto",
+    series: [
+      {
+        name: "Notebooks",
+        data: [44, 55, 41, 37, 22, 43, 21, 35, 28, 42, 38, 45],
+      },
+      {
+        name: "Smartphones",
+        data: [53, 32, 33, 52, 13, 43, 32, 29, 36, 41, 47, 38],
+      },
+      {
+        name: "Tablets",
+        data: [12, 17, 11, 9, 15, 11, 20, 18, 14, 16, 19, 13],
+      },
+      {
+        name: "Acessórios",
+        data: [9, 7, 5, 8, 6, 9, 4, 12, 10, 8, 11, 9],
+      },
+      {
+        name: "Impressoras",
+        data: [25, 12, 19, 32, 25, 24, 10, 22, 18, 27, 20, 24],
+      },
+    ],
+    categories: [
+      "Jan",
+      "Fev",
+      "Mar",
+      "Abr",
+      "Mai",
+      "Jun",
+      "Jul",
+      "Ago",
+      "Set",
+      "Out",
+      "Nov",
+      "Dez",
+    ],
+    chartHeight: 400,
+    colors: ["#37474f", "#546e7a", "#78909c", "#90a4ae", "#b0bec5"],
+    horizontal: true,
+    stacked: true,
+    strokeWidth: 1,
+    strokeColors: ["#fff"],
+    showDataLabels: true,
+    showTotal: true,
+    totalOffsetX: 0,
+    totalFontSize: "13px",
+    totalFontWeight: 900,
+    xAxisFormatter: (val) => val + "K",
+    yAxisTitle: undefined,
+    tooltipFormatter: (val) => val + "K vendas",
+    fillOpacity: 1,
+    showLegend: true,
+    legendPosition: "top",
+    legendHorizontalAlign: "left",
+    legendOffsetX: 40,
+    legendOffsetY: 0,
+  },
+
+  // Faturamento por Região
+  faturamentoPorRegiao: {
+    title: "Faturamento por Região (Milhares R$)",
+    series: [
+      {
+        name: "Q1",
+        data: [320, 280, 150, 190, 120],
+      },
+      {
+        name: "Q2",
+        data: [380, 310, 180, 220, 140],
+      },
+      {
+        name: "Q3",
+        data: [360, 290, 170, 210, 130],
+      },
+      {
+        name: "Q4",
+        data: [420, 340, 200, 250, 160],
+      },
+    ],
+    categories: ["Sudeste", "Sul", "Nordeste", "Centro-Oeste", "Norte"],
+    chartHeight: 350,
+    colors: ["#37474f", "#546e7a", "#78909c", "#90a4ae"],
+    horizontal: true,
+    stacked: true,
+    strokeWidth: 1,
+    strokeColors: ["#fff"],
+    showDataLabels: true,
+    showTotal: true,
+    totalOffsetX: 0,
+    totalFontSize: "13px",
+    totalFontWeight: 900,
+    xAxisFormatter: (val) => "R$ " + val + "K",
+    yAxisTitle: undefined,
+    tooltipFormatter: (val) => "R$ " + val + "K",
+    fillOpacity: 1,
+    showLegend: true,
+    legendPosition: "top",
+    legendHorizontalAlign: "left",
+    legendOffsetX: 40,
+    legendOffsetY: 0,
+  },
+
+  // Performance por Representante
+  performanceRepresentante: {
+    title: "Performance de Vendas por Representante",
+    series: [
+      {
+        name: "Meta Atingida",
+        data: [85, 92, 78, 88, 95, 82, 89],
+      },
+      {
+        name: "Acima da Meta",
+        data: [15, 8, 22, 12, 5, 18, 11],
+      },
+    ],
+    categories: [
+      "João Silva",
+      "Maria Santos",
+      "Pedro Costa",
+      "Ana Oliveira",
+      "Carlos Ferreira",
+      "Paula Souza",
+      "Roberto Lima",
+    ],
+    chartHeight: 400,
+    colors: ["#37474f", "#78909c"],
+    horizontal: true,
+    stacked: true,
+    strokeWidth: 1,
+    strokeColors: ["#fff"],
+    showDataLabels: true,
+    showTotal: true,
+    totalOffsetX: 0,
+    totalFontSize: "13px",
+    totalFontWeight: 900,
+    xAxisFormatter: (val) => val + "%",
+    yAxisTitle: undefined,
+    tooltipFormatter: (val) => val + "% da meta",
+    fillOpacity: 1,
+    showLegend: true,
+    legendPosition: "top",
+    legendHorizontalAlign: "left",
+    legendOffsetX: 40,
+    legendOffsetY: 0,
+  },
+
+  // Mix de Produtos por Cliente
+  mixProdutosPorCliente: {
+    title: "Mix de Produtos por Cliente",
+    series: [
+      {
+        name: "Notebooks",
+        data: [25, 18, 32, 28, 15, 22, 35, 20, 12, 30],
+      },
+      {
+        name: "Smartphones",
+        data: [30, 25, 20, 22, 28, 35, 18, 32, 25, 20],
+      },
+      {
+        name: "Tablets",
+        data: [15, 20, 12, 18, 22, 8, 15, 25, 30, 18],
+      },
+      {
+        name: "Acessórios",
+        data: [20, 25, 18, 15, 20, 25, 22, 15, 20, 22],
+      },
+      {
+        name: "Impressoras",
+        data: [10, 12, 18, 17, 15, 10, 10, 8, 13, 10],
+      },
+    ],
+    categories: [
+      "TechCorp Solutions",
+      "InfoTech Ltda",
+      "Office Express",
+      "Mobile World",
+      "Digital Store",
+      "Gamer Zone",
+      "Stream Pro",
+      "Hardware Plus",
+      "Gaming Masters",
+      "PC Builder",
+    ],
+    chartHeight: 400,
+    colors: ["#E65100", "#FF8A65", "#FFAB91", "#FFCCBC", "#FFF3E0"],
+    horizontal: true,
+    stacked: true,
+    strokeWidth: 1,
+    strokeColors: ["#fff"],
+    showDataLabels: true,
+    showTotal: true,
+    totalOffsetX: 0,
+    totalFontSize: "13px",
+    totalFontWeight: 900,
+    xAxisFormatter: (val) => val + " itens",
+    yAxisTitle: undefined,
+    tooltipFormatter: (val) => val + " produtos vendidos",
+    fillOpacity: 1,
+    showLegend: true,
+    legendPosition: "top",
+    legendHorizontalAlign: "left",
+    legendOffsetX: 40,
+    legendOffsetY: 0,
+  },
+
+  // Mix de Produtos por Período
+  mixProdutosPorPeriodo: {
+    title: "Evolução do Mix de Produtos por Trimestre",
+    series: [
+      {
+        name: "Notebooks",
+        data: [120, 135, 128, 142],
+      },
+      {
+        name: "Smartphones",
+        data: [85, 92, 88, 95],
+      },
+      {
+        name: "Tablets",
+        data: [65, 58, 72, 68],
+      },
+      {
+        name: "Acessórios",
+        data: [45, 52, 48, 55],
+      },
+      {
+        name: "Impressoras",
+        data: [35, 28, 32, 38],
+      },
+    ],
+    categories: ["Q1 2024", "Q2 2024", "Q3 2024", "Q4 2024"],
+    chartHeight: 350,
+    colors: ["#E65100", "#FF8A65", "#FFAB91", "#FFCCBC", "#FFF3E0"],
+    horizontal: false,
+    stacked: true,
+    strokeWidth: 1,
+    strokeColors: ["#fff"],
+    showDataLabels: false,
+    showTotal: true,
+    totalOffsetX: 0,
+    totalFontSize: "12px",
+    totalFontWeight: 600,
+    xAxisFormatter: (val) => val,
+    yAxisTitle: "Quantidade Vendida",
+    tooltipFormatter: (val) => val + " unidades",
+    fillOpacity: 1,
+    showLegend: true,
+    legendPosition: "top",
+    legendHorizontalAlign: "center",
+    legendOffsetX: 0,
+    legendOffsetY: 0,
+  },
+
+  // Participação no Mix por Cliente Top 5
+  participacaoMixClientesTop: {
+    title: "Participação no Mix - Top 5 Clientes",
+    series: [
+      {
+        name: "Notebooks",
+        data: [35, 28, 32, 25, 30],
+      },
+      {
+        name: "Smartphones",
+        data: [25, 30, 22, 28, 20],
+      },
+      {
+        name: "Tablets",
+        data: [20, 15, 18, 22, 25],
+      },
+      {
+        name: "Acessórios",
+        data: [15, 20, 18, 15, 15],
+      },
+      {
+        name: "Impressoras",
+        data: [5, 7, 10, 10, 10],
+      },
+    ],
+    categories: [
+      "TechCorp Solutions",
+      "InfoTech Ltda",
+      "Office Express",
+      "Mobile World",
+      "Digital Store",
+    ],
+    chartHeight: 400,
+    colors: ["#E65100", "#FF8A65", "#FFAB91", "#FFCCBC", "#FFF3E0"],
+    horizontal: true,
+    stacked: true,
+    strokeWidth: 1,
+    strokeColors: ["#fff"],
+    showDataLabels: true,
+    showTotal: true,
+    totalOffsetX: 0,
+    totalFontSize: "13px",
+    totalFontWeight: 900,
+    xAxisFormatter: (val) => val + "%",
+    yAxisTitle: undefined,
+    tooltipFormatter: (val) => val + "% do mix",
+    fillOpacity: 1,
+    showLegend: true,
+    legendPosition: "top",
+    legendHorizontalAlign: "left",
+    legendOffsetX: 40,
+    legendOffsetY: 0,
+  },
+};
+
 // Dados para DataTable de Metas
 export const metasData = {
   metas: [
@@ -1696,9 +2009,450 @@ export const metasData = {
   },
 };
 
+// Dados para BoxPlot - Ticket Médio dos Pedidos
+export const boxPlotTicketMedioData = {
+  ticketMedioPorPeriodo: {
+    title: "Análise de Ticket Médio por Período",
+    seriesName: "Ticket Médio (R$)",
+    chartHeight: 400,
+    colors: ["#008FFB", "#FEB019"],
+    chartData: [
+      {
+        x: "Jan 2024",
+        y: [850, 1200, 1450, 1680, 2150], // [min, Q1, median, Q3, max]
+        goals: [
+          {
+            value: 800, // Meta mínima
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#FF4560", // Vermelho para meta não atingida
+          },
+          {
+            value: 1800, // Meta ideal
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#00E396", // Verde para meta ideal
+          },
+        ],
+      },
+      {
+        x: "Fev 2024",
+        y: [920, 1280, 1520, 1750, 2080],
+        goals: [
+          {
+            value: 850,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#FF4560",
+          },
+          {
+            value: 1850,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#00E396",
+          },
+        ],
+      },
+      {
+        x: "Mar 2024",
+        y: [1100, 1380, 1620, 1850, 2200],
+        goals: [
+          {
+            value: 900,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#FF4560",
+          },
+          {
+            value: 1900,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#00E396",
+          },
+        ],
+      },
+      {
+        x: "Abr 2024",
+        y: [980, 1350, 1580, 1820, 2180],
+        goals: [
+          {
+            value: 950,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#FF4560",
+          },
+          {
+            value: 1950,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#00E396",
+          },
+        ],
+      },
+      {
+        x: "Mai 2024",
+        y: [1150, 1420, 1680, 1920, 2350],
+        goals: [
+          {
+            value: 1000,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#FF4560",
+          },
+          {
+            value: 2000,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#00E396",
+          },
+        ],
+      },
+      {
+        x: "Jun 2024",
+        y: [1080, 1390, 1650, 1890, 2280],
+        goals: [
+          {
+            value: 1050,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#FF4560",
+          },
+          {
+            value: 2050,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#00E396",
+          },
+        ],
+      },
+    ],
+  },
+
+  ticketMedioPorCliente: {
+    title: "Distribuição de Ticket Médio por Segmento de Cliente",
+    seriesName: "Ticket Médio (R$)",
+    chartHeight: 450,
+    colors: ["#775DD0", "#FEB019"],
+    chartData: [
+      {
+        x: "Cliente A",
+        y: [450, 680, 850, 1020, 1350],
+        goals: [
+          {
+            value: 600, // Meta mínima para pequeno porte
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#FF4560",
+          },
+          {
+            value: 1000, // Meta ideal para pequeno porte
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#00E396",
+          },
+        ],
+      },
+      {
+        x: "Cliente B",
+        y: [950, 1280, 1520, 1780, 2150],
+        goals: [
+          {
+            value: 1200,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#FF4560",
+          },
+          {
+            value: 1800,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#00E396",
+          },
+        ],
+      },
+      {
+        x: "Cliente C",
+        y: [1650, 2180, 2520, 2890, 3450],
+        goals: [
+          {
+            value: 2000,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#FF4560",
+          },
+          {
+            value: 2800,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#00E396",
+          },
+        ],
+      },
+      {
+        x: "Cliente D",
+        y: [2250, 3180, 3820, 4350, 5250],
+        goals: [
+          {
+            value: 3000,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#FF4560",
+          },
+          {
+            value: 4200,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#00E396",
+          },
+        ],
+      },
+    ],
+  },
+
+  ticketMedioPorRegiao: {
+    title: "Ticket Médio por Região Geográfica",
+    seriesName: "Ticket Médio (R$)",
+    chartHeight: 400,
+    colors: ["#37474f", "#FEB019"],
+    chartData: [
+      {
+        x: "Norte",
+        y: [780, 1050, 1280, 1520, 1850],
+        goals: [
+          {
+            value: 1000,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#FF4560",
+          },
+          {
+            value: 1600,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#00E396",
+          },
+        ],
+      },
+      {
+        x: "Nordeste",
+        y: [850, 1120, 1350, 1580, 1920],
+        goals: [
+          {
+            value: 1100,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#FF4560",
+          },
+          {
+            value: 1700,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#00E396",
+          },
+        ],
+      },
+      {
+        x: "Centro-Oeste",
+        y: [920, 1180, 1420, 1680, 2050],
+        goals: [
+          {
+            value: 1200,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#FF4560",
+          },
+          {
+            value: 1800,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#00E396",
+          },
+        ],
+      },
+      {
+        x: "Sudeste",
+        y: [1150, 1480, 1750, 2080, 2550],
+        goals: [
+          {
+            value: 1400,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#FF4560",
+          },
+          {
+            value: 2200,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#00E396",
+          },
+        ],
+      },
+      {
+        x: "Sul",
+        y: [1080, 1350, 1620, 1920, 2380],
+        goals: [
+          {
+            value: 1300,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#FF4560",
+          },
+          {
+            value: 2100,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#00E396",
+          },
+        ],
+      },
+    ],
+  },
+
+  ticketMedioPorProduto: {
+    title: "Distribuição de Ticket Médio por Categoria de Produto",
+    seriesName: "Ticket Médio (R$)",
+    chartHeight: 450,
+    colors: ["#c62828", "#FEB019"],
+    chartData: [
+      {
+        x: "Notebooks",
+        y: [2200, 2880, 3350, 3920, 4650],
+        goals: [
+          {
+            value: 2500,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#FF4560",
+          },
+          {
+            value: 4000,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#00E396",
+          },
+        ],
+      },
+      {
+        x: "Smartphones",
+        y: [480, 680, 850, 1120, 1580],
+        goals: [
+          {
+            value: 600,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#FF4560",
+          },
+          {
+            value: 1200,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#00E396",
+          },
+        ],
+      },
+      {
+        x: "Tablets",
+        y: [350, 520, 680, 890, 1250],
+        goals: [
+          {
+            value: 500,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#FF4560",
+          },
+          {
+            value: 1000,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#00E396",
+          },
+        ],
+      },
+      {
+        x: "Acessórios",
+        y: [85, 150, 220, 320, 480],
+        goals: [
+          {
+            value: 120,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#FF4560",
+          },
+          {
+            value: 350,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#00E396",
+          },
+        ],
+      },
+      {
+        x: "Impressoras",
+        y: [1200, 1580, 1920, 2350, 2850],
+        goals: [
+          {
+            value: 1500,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#FF4560",
+          },
+          {
+            value: 2500,
+            strokeWidth: 0,
+            strokeHeight: 13,
+            strokeLineCap: "round",
+            strokeColor: "#00E396",
+          },
+        ],
+      },
+    ],
+  },
+};
+
 // Exportação default
 export default {
   ...dashboardAnalysisByClientData,
   mapDrilldown: mapDrilldownData,
+  stackedBarChart: stackedBarChartData,
+  boxPlotTicketMedio: boxPlotTicketMedioData,
   metas: metasData,
 };
