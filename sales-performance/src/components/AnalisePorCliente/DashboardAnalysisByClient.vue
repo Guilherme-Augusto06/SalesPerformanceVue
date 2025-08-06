@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <h1 class="text-h3 font-weight-bold mb-2 text-purple-darken-4">
+      <h1 class="text-h4 font-weight-bold mb-2 text-purple-darken-4">
         Análise por cliente
       </h1>
       <p class="text-subtitle-1 text-grey">Dashboard</p>

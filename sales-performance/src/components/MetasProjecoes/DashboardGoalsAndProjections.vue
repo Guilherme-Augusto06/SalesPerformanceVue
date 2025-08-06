@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <h1 class="text-h3 font-weight-bold mb-2 text-teal-darken-3">
+      <h1 class="text-h4 font-weight-bold mb-2 text-teal-darken-3">
         Metas e Projeções
       </h1>
       <p class="text-subtitle-1 text-grey">Dashboard</p>

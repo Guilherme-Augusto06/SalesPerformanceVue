@@ -1,13 +1,13 @@
 <template>
   <div>
     <div>
-      <h1 class="text-h3 font-weight-bold mb-2 text-orange-darken-4">
+      <h1 class="text-h4 font-weight-bold mb-2 text-orange-darken-4">
         Análise por pedidos e mix
       </h1>
       <p class="text-subtitle-1 text-grey">Dashboard</p>
     </div>
     <v-row class="mt-4">
-      <v-col class="mb-4" cols="12" md="12">
+      <v-col class="mb-4" cols="12" md="6">
         <StackedBarChart
           :title="vendasData.title"
           :series="vendasData.series"
@@ -34,22 +34,7 @@
           :legend-offset-y="vendasData.legendOffsetY"
         />
       </v-col>
-    </v-row>
-
-    <v-row>
-      <v-col class="mb-4" cols="12" md="12">
-        <box-plot
-          :title="ticketMedioPorCliente.title"
-          :series-name="ticketMedioPorCliente.seriesName"
-          :chart-data="ticketMedioPorCliente.chartData"
-          :chart-height="ticketMedioPorCliente.chartHeight"
-          :colors="ticketMedioPorCliente.colors"
-        />
-      </v-col>
-    </v-row>
-
-    <v-row>
-      <v-col class="mb-4" cols="12" md="12">
+      <v-col class="mb-4" cols="12" md="6">
         <BarChart
           title="Frequência média de compra"
           :categories="DesempenhoVendedor.categories"
@@ -63,6 +48,18 @@
           :goal-stroke-width="12"
           :data-label-format="DesempenhoVendedor.dataLabelFormat"
           :legend-items="DesempenhoVendedor.legendItems"
+        />
+      </v-col>
+    </v-row>
+
+    <v-row>
+      <v-col class="mb-4" cols="12" md="12">
+        <box-plot
+          :title="ticketMedioPorCliente.title"
+          :series-name="ticketMedioPorCliente.seriesName"
+          :chart-data="ticketMedioPorCliente.chartData"
+          :chart-height="ticketMedioPorCliente.chartHeight"
+          :colors="ticketMedioPorCliente.colors"
         />
       </v-col>
     </v-row>

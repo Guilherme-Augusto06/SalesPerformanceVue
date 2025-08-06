@@ -1,7 +1,6 @@
 <template>
   <v-card elevation="2" rounded="lg" class="pa-4">
     <v-card-title v-if="title" class="text-h6 font-weight-medium mb-3">
-      {{ title }}
     </v-card-title>
     <div
       :id="mapContainerId"
@@ -90,6 +89,7 @@ export default {
           height: this.height,
           backgroundColor: isDark ? "" : "#FFFFFF",
         },
+
         title: {
           text: this.title,
           style: {
@@ -98,6 +98,7 @@ export default {
             color: isDark ? "#FFFFFF" : "#000000",
           },
         },
+
         mapNavigation: {
           enabled: this.enableNavigation,
           buttonOptions: {

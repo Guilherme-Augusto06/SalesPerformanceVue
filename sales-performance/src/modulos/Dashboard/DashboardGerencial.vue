@@ -4,19 +4,19 @@
 
     <div>
       <div
-        class="elevation-2 rounded-xl pa-4 mb-6"
+        class="elevation-2 rounded-xl pa-4 mb-4 dashboard-top-card"
         :style="{ 'border-bottom': `10px solid ${borderColor}` }"
       >
-        <v-btn @click="toggleTheme" class="top-4 right-4" rounded="xl">
-          <v-icon>
-            {{
-              theme.global.name.value === "dark"
-                ? "mdi-moon-waxing-crescent"
-                : "mdi-white-balance-sunny"
-            }}
-          </v-icon>
-        </v-btn>
-        <div class="d-flex align-center justify-end mb-4 ga-2">
+        <div class="d-flex align-center justify-end mb-2 ga-2">
+          <v-btn @click="toggleTheme" class="top-4 right-4" rounded="xl">
+            <v-icon>
+              {{
+                theme.global.name.value === "dark"
+                  ? "mdi-moon-waxing-crescent"
+                  : "mdi-white-balance-sunny"
+              }}
+            </v-icon>
+          </v-btn>
           <v-btn
             prepend-icon="mdi-filter"
             color="orange"
@@ -447,3 +447,5 @@ export default {
   },
 };
 </script>
+
+<style></style>

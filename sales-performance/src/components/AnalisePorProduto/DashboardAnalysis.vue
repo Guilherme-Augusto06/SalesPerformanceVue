@@ -1,13 +1,13 @@
 <template>
   <div>
     <div>
-      <h1 class="text-h3 font-weight-bold mb-2 text-red-darken-4">
+      <h1 class="text-h4 font-weight-bold mb-2 text-red-darken-4">
         Análise por Produto
       </h1>
       <p class="text-subtitle-1 text-grey">Dashboard</p>
     </div>
     <v-row class="mt-4">
-      <v-col cols="12" md="12">
+      <v-col cols="12" md="6">
         <BarChart
           title="Vendas por código e descrição do produto"
           :categories="['Q1', 'Q2', 'Q3', 'Q4']"
@@ -23,12 +23,10 @@
           goal-name="Meta Trimestral"
           data-label-format="value"
           :legend-items="['Vendas', 'Meta']"
+          :height="450"
         />
       </v-col>
-    </v-row>
-
-    <v-row>
-      <v-col cols="12" md="12">
+      <v-col cols="12" md="6">
         <AreaChart
           title="Itens em queda de performance"
           :categories="itemsEmQueda.categories"
@@ -47,8 +45,10 @@
       </v-col>
     </v-row>
 
+    <v-row> </v-row>
+
     <v-row class="mt-4">
-      <v-col cols="12" md="8">
+      <v-col cols="12" md="6">
         <BarAlternativeChart
           title="Performance por linha"
           title-text="Melhores linhas"
@@ -63,7 +63,7 @@
           :colors="colorPalette.barColors"
         />
       </v-col>
-      <v-col cols="6" sm="3" md="4">
+      <v-col cols="6" sm="3" md="6">
         <DonutChart
           :title="giroEstoque.title"
           :series="giroEstoque.series"

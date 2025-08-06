@@ -53,6 +53,7 @@ export default {
     goalValues: { type: Array, default: () => [50, 135, 500] },
     seriesName: { type: String, default: "Atual" },
     chartHeight: { type: Number, default: 350 },
+    height: { type: Number, default: null },
     horizontal: { type: Boolean, default: true },
     primaryColor: { type: String, default: "#00E396" },
     goalColor: { type: String, default: "#775DD0" },
@@ -116,6 +117,8 @@ export default {
       if (!element) return;
       if (this.chart) this.chart.destroy();
 
+      const chartHeightValue = this.height || this.chartHeight;
+
       const options = {
         series: [
           {
@@ -124,7 +127,7 @@ export default {
           },
         ],
         chart: {
-          height: this.chartHeight,
+          height: chartHeightValue,
           type: "bar",
           background: this.currentTheme,
         },

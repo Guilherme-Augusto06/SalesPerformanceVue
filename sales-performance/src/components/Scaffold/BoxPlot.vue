@@ -17,7 +17,6 @@ export default {
   name: "BoxPlot",
   mixins: [ColorMixin],
   props: {
-    title: { type: String, default: "BoxPlot - Análise de Ticket Médio" },
     seriesName: { type: String, default: "Ticket Médio" },
     chartData: {
       type: Array,

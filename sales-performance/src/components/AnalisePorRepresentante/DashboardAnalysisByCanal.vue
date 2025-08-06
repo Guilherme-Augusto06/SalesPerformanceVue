@@ -1,13 +1,13 @@
 <template>
   <div>
     <div>
-      <h1 class="text-h3 font-weight-bold mb-2 text-deep-purple-darken-4">
+      <h1 class="text-h4 font-weight-bold mb-2 text-deep-purple-darken-4">
         Análise por representante
       </h1>
       <p class="text-subtitle-1 text-grey">Dashboard</p>
     </div>
     <v-row class="mt-4">
-      <v-col cols="12" md="12">
+      <v-col cols="12" md="6">
         <BarChart
           :title="ComissoesPagasEstimadas.title"
           :categories="ComissoesPagasEstimadas.categories"
@@ -23,6 +23,22 @@
           goal-name="Meta"
           :data-label-format="ComissoesPagasEstimadas.dataLabelFormat"
           :legend-items="ComissoesPagasEstimadas.legendItems"
+        />
+      </v-col>
+      <v-col cols="12" md="6">
+        <BarChart
+          :title="DesempenhoVendedor.title"
+          :categories="DesempenhoVendedor.categories"
+          :values="DesempenhoVendedor.values"
+          :goal-values="false"
+          :series-name="DesempenhoVendedor.seriesName"
+          :chart-height="DesempenhoVendedor.chartHeight"
+          :horizontal="DesempenhoVendedor.horizontal"
+          :primary-color="DesempenhoVendedor.primaryColor"
+          :goal-color="configuracoes.colorPalette.accent"
+          :goal-stroke-width="12"
+          :data-label-format="DesempenhoVendedor.dataLabelFormat"
+          :legend-items="DesempenhoVendedor.legendItems"
         />
       </v-col>
       <v-col cols="12" md="12">
@@ -41,22 +57,6 @@
           :show-grid="atingimentoMetaPorCanal.showGrid"
           :grid-colors="atingimentoMetaPorCanal.gridColors"
           :grid-opacity="atingimentoMetaPorCanal.gridOpacity"
-        />
-      </v-col>
-      <v-col cols="12" md="12">
-        <BarChart
-          :title="DesempenhoVendedor.title"
-          :categories="DesempenhoVendedor.categories"
-          :values="DesempenhoVendedor.values"
-          :goal-values="false"
-          :series-name="DesempenhoVendedor.seriesName"
-          :chart-height="DesempenhoVendedor.chartHeight"
-          :horizontal="DesempenhoVendedor.horizontal"
-          :primary-color="DesempenhoVendedor.primaryColor"
-          :goal-color="configuracoes.colorPalette.accent"
-          :goal-stroke-width="12"
-          :data-label-format="DesempenhoVendedor.dataLabelFormat"
-          :legend-items="DesempenhoVendedor.legendItems"
         />
       </v-col>
     </v-row>
