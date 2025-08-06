@@ -13,22 +13,15 @@
 <script>
 import * as Highcharts from "highcharts/highmaps";
 import mapData from "@highcharts/map-collection/countries/br/br-all.geo.json";
+import { useTheme } from "vuetify";
+import { watch } from "vue";
 
 export default {
   name: "MapDrilldown",
   props: {
-    title: {
-      type: String,
-      default: "Mapa do Brasil",
-    },
-    data: {
-      type: Array,
-      default: () => [],
-    },
-    seriesName: {
-      type: String,
-      default: "Dados",
-    },
+    title: { type: String, default: "Mapa do Brasil" },
+    data: { type: Array, default: () => [] },
+    seriesName: { type: String, default: "Dados" },
     colorStops: {
       type: Array,
       default: () => [
@@ -37,34 +30,13 @@ export default {
         [1, "#000022"],
       ],
     },
-    hoverColor: {
-      type: String,
-      default: "#BADA55",
-    },
-    showDataLabels: {
-      type: Boolean,
-      default: true,
-    },
-    dataLabelFormat: {
-      type: String,
-      default: "{point.code}",
-    },
-    minValue: {
-      type: Number,
-      default: 0,
-    },
-    maxValue: {
-      type: Number,
-      default: null,
-    },
-    height: {
-      type: Number,
-      default: 400,
-    },
-    enableNavigation: {
-      type: Boolean,
-      default: true,
-    },
+    hoverColor: { type: String, default: "#BADA55" },
+    showDataLabels: { type: Boolean, default: true },
+    dataLabelFormat: { type: String, default: "{point.code}" },
+    minValue: { type: Number, default: 0 },
+    maxValue: { type: Number, default: null },
+    height: { type: Number, default: 400 },
+    enableNavigation: { type: Boolean, default: true },
   },
   data() {
     return {
@@ -72,86 +44,110 @@ export default {
       mapContainerId: `map-container-${Math.random()
         .toString(36)
         .substr(2, 9)}`,
+      currentTheme: "light",
     };
+  },
+  mounted() {
+    const theme = useTheme();
+    this.currentTheme = theme.global.name.value;
+
+    this.unwatch = watch(
+      () => theme.global.name.value,
+      (newVal) => {
+        this.currentTheme = newVal;
+        this.loadMap();
+      }
+    );
+
+    this.$nextTick(() => {
+      this.loadMap();
+    });
+  },
+  beforeUnmount() {
+    if (this.chart) this.chart.destroy();
+    if (this.unwatch) this.unwatch();
   },
   methods: {
     loadMap() {
-      // Aguarda o DOM estar pronto
       if (!document.getElementById(this.mapContainerId)) {
         setTimeout(() => this.loadMap(), 100);
         return;
       }
 
-      // Converte os dados para o formato correto do Highcharts
+      const isDark = this.currentTheme === "dark";
+
       const mapDataSeries =
         this.data.length > 0
-          ? this.data.map((item) => [
-              item.key || item.state, // hc-key
-              item.value, // value
-            ])
-          : mapData.features.map((f, i) => [
+          ? this.data.map((item) => [item.key || item.state, item.value])
+          : mapData.features.map((f) => [
               f.properties["hc-key"],
               Math.floor(Math.random() * 100),
             ]);
 
-      // Configuração do mapa seguindo a documentação oficial
       const chartOptions = {
         chart: {
           map: mapData,
           height: this.height,
+          backgroundColor: isDark ? "" : "#FFFFFF",
         },
         title: {
           text: this.title,
           style: {
             fontSize: "16px",
             fontWeight: "bold",
+            color: isDark ? "#FFFFFF" : "#000000",
           },
         },
         mapNavigation: {
           enabled: this.enableNavigation,
           buttonOptions: {
             verticalAlign: "bottom",
+            theme: {
+              fill: isDark ? "#2c2c2c" : "#FFFFFF",
+              style: {
+                color: isDark ? "#FFFFFF" : "#000000",
+              },
+            },
           },
         },
         legend: {
           layout: "horizontal",
           borderWidth: 0,
-          backgroundColor: "rgba(255,255,255,0.85)",
+          backgroundColor: isDark
+            ? "rgba(0,0,0,0.6)"
+            : "rgba(255,255,255,0.85)",
           floating: true,
           verticalAlign: "top",
           y: 25,
+          itemStyle: {
+            color: isDark ? "#FFFFFF" : "#000000",
+          },
         },
         colorAxis: {
           min: this.minValue,
           max: this.maxValue,
           stops: this.colorStops,
-          minColor: this.colorStops[0] ? this.colorStops[0][1] : "#EFEFFF",
-          maxColor: this.colorStops[this.colorStops.length - 1]
-            ? this.colorStops[this.colorStops.length - 1][1]
-            : "#000022",
+          minColor: this.colorStops[0]?.[1] || "#EFEFFF",
+          maxColor:
+            this.colorStops[this.colorStops.length - 1]?.[1] || "#000022",
         },
         series: [
           {
             accessibility: {
               point: {
-                valueDescriptionFormat:
-                  "{xDescription}, {point.value} " + this.seriesName,
+                valueDescriptionFormat: `{xDescription}, {point.value} ${this.seriesName}`,
               },
             },
-            animation: {
-              duration: 1000,
-            },
+            animation: { duration: 1000 },
             data: mapDataSeries,
             joinBy: "hc-key",
             name: this.seriesName,
             states: {
-              hover: {
-                color: this.hoverColor,
-              },
+              hover: { color: this.hoverColor },
             },
             dataLabels: {
               enabled: this.showDataLabels,
-              color: "#FFFFFF",
+              color: isDark ? "#FFFFFF" : "#000000",
               format: this.dataLabelFormat,
               style: {
                 fontSize: "11px",
@@ -159,25 +155,18 @@ export default {
               },
             },
             tooltip: {
-              pointFormat:
-                "<b>{point.name}</b><br/>" +
-                this.seriesName +
-                ": <b>{point.value:,.0f}</b>",
-              backgroundColor: "rgba(0,0,0,0.8)",
+              pointFormat: `<b>{point.name}</b><br/>${this.seriesName}: <b>{point.value:,.0f}</b>`,
+              backgroundColor: isDark ? "rgba(0,0,0,0.85)" : "#FFFFFF",
               style: {
-                color: "#FFFFFF",
+                color: isDark ? "#FFFFFF" : "#000000",
               },
             },
           },
         ],
       };
 
-      // Destroi o gráfico anterior se existir
-      if (this.chart) {
-        this.chart.destroy();
-      }
+      if (this.chart) this.chart.destroy();
 
-      // Cria o novo gráfico
       this.chart = Highcharts.mapChart(this.mapContainerId, chartOptions);
     },
   },
@@ -200,16 +189,6 @@ export default {
       },
       deep: true,
     },
-  },
-  mounted() {
-    this.$nextTick(() => {
-      this.loadMap();
-    });
-  },
-  beforeUnmount() {
-    if (this.chart) {
-      this.chart.destroy();
-    }
   },
 };
 </script>

@@ -9,33 +9,16 @@
 
 <script>
 import { ColorGenerator, ColorMixin } from "../../utils/colorGenerator.js";
+import ApexCharts from "apexcharts";
+import { useTheme } from "vuetify";
+import { watch } from "vue";
 
 export default {
   name: "ApexBoxPlot",
   mixins: [ColorMixin],
-  data() {
-    return {
-      chartId: `apex-boxplot-chart-${Math.random().toString(36).substr(2, 9)}`,
-      chart: null,
-    };
-  },
-  mounted() {
-    this.renderChart();
-  },
-  beforeUnmount() {
-    if (this.chart) {
-      this.chart.destroy();
-    }
-  },
   props: {
-    title: {
-      type: String,
-      default: "BoxPlot - Análise de Ticket Médio",
-    },
-    seriesName: {
-      type: String,
-      default: "Ticket Médio",
-    },
+    title: { type: String, default: "BoxPlot - Análise de Ticket Médio" },
+    seriesName: { type: String, default: "Ticket Médio" },
     chartData: {
       type: Array,
       default: () => [
@@ -81,60 +64,32 @@ export default {
         },
       ],
     },
-    chartHeight: {
-      type: Number,
-      default: 350,
-    },
-    colors: {
-      type: Array,
-      default: () => ["#008FFB", "#FEB019"],
-    },
-    goalColor: {
-      type: String,
-      default: "#FEB019",
-    },
-    goalStrokeHeight: {
-      type: Number,
-      default: 13,
-    },
-    goalStrokeLineCap: {
-      type: String,
-      default: "round",
-    },
-    showTitle: {
-      type: Boolean,
-      default: true,
-    },
-    titleAlign: {
-      type: String,
-      default: "left", // 'left', 'center', 'right'
-    },
-    xAxisType: {
-      type: String,
-      default: "category", // 'category', 'datetime', 'numeric'
-    },
-    showLegend: {
-      type: Boolean,
-      default: true,
-    },
-    showTooltip: {
-      type: Boolean,
-      default: true,
-    },
+    chartHeight: { type: Number, default: 350 },
+    colors: { type: Array, default: () => ["#008FFB", "#FEB019"] },
+    goalColor: { type: String, default: "#FEB019" },
+    goalStrokeHeight: { type: Number, default: 13 },
+    goalStrokeLineCap: { type: String, default: "round" },
+    showTitle: { type: Boolean, default: true },
+    titleAlign: { type: String, default: "left" },
+    xAxisType: { type: String, default: "category" },
+    showLegend: { type: Boolean, default: true },
+    showTooltip: { type: Boolean, default: true },
     tooltipFormatter: {
       type: Function,
       default: (val) => `R$ ${val.toLocaleString("pt-BR")}`,
     },
   },
+  data() {
+    return {
+      chartId: `apex-boxplot-chart-${Math.random().toString(36).substr(2, 9)}`,
+      chart: null,
+      currentTheme: "light",
+    };
+  },
   computed: {
-    getColorCount() {
-      return this.chartData.length;
-    },
-
     finalColors() {
       return this.autoColors ? this.dynamicColors : this.colors;
     },
-
     processedChartData() {
       return this.chartData.map((item) => ({
         x: item.x,
@@ -151,16 +106,29 @@ export default {
       }));
     },
   },
+  mounted() {
+    const theme = useTheme();
+    this.currentTheme = theme.global.name.value;
+
+    this.unwatch = watch(
+      () => theme.global.name.value,
+      (newVal) => {
+        this.currentTheme = newVal;
+        this.renderChart();
+      }
+    );
+
+    this.renderChart();
+  },
+  beforeUnmount() {
+    if (this.chart) this.chart.destroy();
+    if (this.unwatch) this.unwatch();
+  },
   methods: {
     renderChart() {
-      // Verificar se o elemento existe
       const element = document.querySelector(`#${this.chartId}`);
-      if (!element) {
-        console.warn(`Elemento com ID ${this.chartId} não encontrado`);
-        return;
-      }
+      if (!element) return;
 
-      // Destruir gráfico existente se houver
       if (this.chart) {
         this.chart.destroy();
       }
@@ -176,37 +144,61 @@ export default {
         chart: {
           type: "boxPlot",
           height: this.chartHeight,
+          toolbar: { show: false },
+          zoom: { enabled: false },
+          background: this.currentTheme,
+        },
+        theme: {
+          mode: this.currentTheme,
+          background: this.currentTheme,
         },
         colors: this.finalColors,
         title: this.showTitle
           ? {
               text: this.title,
               align: this.titleAlign,
+              style: {
+                color: this.currentTheme === "dark" ? "white" : "black",
+              },
             }
           : undefined,
         xaxis: {
           type: this.xAxisType,
+          labels: {
+            style: {
+              colors: this.currentTheme === "dark" ? "white" : "black",
+            },
+          },
         },
         yaxis: {
           title: {
             text: "Valor do Ticket (R$)",
+            style: {
+              color: this.currentTheme === "dark" ? "white" : "black",
+            },
           },
           labels: {
+            style: {
+              colors: this.currentTheme === "dark" ? "white" : "black",
+            },
             formatter: (val) => {
               return new Intl.NumberFormat("pt-BR", {
                 style: "currency",
                 currency: "BRL",
                 minimumFractionDigits: 0,
-                maximumFractionDigits: 0,
               }).format(val);
             },
           },
         },
         legend: {
           show: this.showLegend,
+          labels: {
+            colors: this.currentTheme === "dark" ? "white" : "black",
+          },
         },
         tooltip: {
           enabled: this.showTooltip,
+          theme: this.currentTheme,
           shared: false,
           intersect: true,
           y: {
@@ -223,7 +215,6 @@ export default {
         },
       };
 
-      // Criar nova instância do gráfico
       this.chart = new ApexCharts(element, options);
       this.chart.render();
     },
