@@ -33,7 +33,7 @@
           :goal-values="false"
           :series-name="rankingValor.seriesName"
           :chart-height="rankingValor.chartHeight"
-          :horizontal="rankingValor.horizontal"
+          :horizontal="rankingValor.vertical"
           :primary-color="rankingValor.primaryColor"
           :goal-color="configuracoes.colorPalette.accent"
           :goal-stroke-width="12"
@@ -131,7 +131,7 @@ import ApexRadialChart from "../Scaffold/ApexRadialChart.vue";
 import ApexBarBasicChart from "../Scaffold/ApexBarBasicChart.vue";
 import ApexAlternativeDonutChart from "../Scaffold/ApexAlternativeDonutChart.vue";
 import MapDrilldown from "../Scaffold/MapDrilldown.vue";
-import SimpleCard from "../DashboardGerencial/Embeeded/SimpleCard.vue";
+import SimpleCard from "../Scaffold/SimpleCard.vue";
 
 // Importação dos dados de mockup
 import { dashboardAnalysisByClientData } from "../../utils/mockup/dashboard.js";

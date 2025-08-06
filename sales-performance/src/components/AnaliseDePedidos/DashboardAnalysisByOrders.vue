@@ -79,7 +79,6 @@ import ApexRadialChart from "../Scaffold/ApexRadialChart.vue";
 import ApexBarBasicChart from "../Scaffold/ApexBarBasicChart.vue";
 import ApexAlternativeDonutChart from "../Scaffold/ApexAlternativeDonutChart.vue";
 import MapDrilldown from "../Scaffold/MapDrilldown.vue";
-import SimpleCard from "../DashboardGerencial/Embeeded/SimpleCard.vue";
 import ApexStackedBarChart from "../Scaffold/ApexStackedBarChat.vue";
 import ApexBoxPlot from "../Scaffold/ApexBoxPlot.vue";
 
@@ -116,7 +115,6 @@ export default {
     ApexBarBasicChart,
     ApexAlternativeDonutChart,
     MapDrilldown,
-    SimpleCard,
     ApexStackedBarChart,
     ApexBoxPlot,
   },

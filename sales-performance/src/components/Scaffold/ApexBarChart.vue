@@ -140,7 +140,7 @@ export default {
         dataLabels: {
           enabled: this.showDataLabels,
           style: {
-            colors: [this.currentTheme === "dark" ? "#fff" : "#000"],
+            colors: [this.currentTheme === "dark" ? "#fff" : "#fff"],
           },
           formatter: (val, opt) => {
             const goals =

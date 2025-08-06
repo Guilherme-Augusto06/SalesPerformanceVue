@@ -272,7 +272,7 @@
 </template>
 <script>
 // Imports dos componentes utilizados no Dashboard
-import SimpleCard from "../../components/DashboardGerencial/Embeeded/SimpleCard.vue";
+import SimpleCard from "../../components/Scaffold/SimpleCard.vue";
 import DashboardManagerial from "../../components/DashboardGerencial/Embeeded/DashboardManagerial.vue";
 import DashboardAnalysis from "../../components/AnalisePorProduto/DashboardAnalysis.vue";
 import DashboardAnalysisByClient from "../../components/AnalisePorCliente/DashboardAnalysisByClient.vue";

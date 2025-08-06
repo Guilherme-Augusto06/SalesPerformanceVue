@@ -39,57 +39,63 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="12" md="8">
+      <v-col cols="12" md="12">
         <ApexAreaChart title="Evolução de Vendas" />
       </v-col>
-      <v-col cols="12" md="4">
+    </v-row>
+    <v-row class="mt-4">
+      <v-col cols="12" md="12">
+        <ApexBarChart title="Vendas Totais" />
+      </v-col>
+    </v-row>
+    <v-row class="mt-4">
+      <v-col cols="12" md="12">
+        <ApexAreaAlternativeChart title="Análise de Tendências" />
+      </v-col>
+    </v-row>
+    <v-row class="mt-4">
+      <v-col cols="12" md="12">
+        <ApexBarBasicChart title="Faturamento por região" />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12" md="12">
         <ApexDonutChart title="Meta vs Realizado" />
       </v-col>
     </v-row>
 
-    <v-row class="mt-4">
-      <v-col cols="12" md="8">
-        <ApexBarChart title="Vendas Totais" />
+    <v-row>
+      <v-col cols="6" sm="3" md="4">
+        <MapDrilldown />
       </v-col>
       <v-col cols="12" md="4">
         <ApexRadialChart title="Vendas Totais" />
       </v-col>
+      <v-col cols="6" sm="4" md="4">
+        <MapDrilldown />
+      </v-col>
+    </v-row>
+    <v-row class="mt-4">
+      <v-col cols="12" md="12">
+        <ApexBarAlternativeChart title="Top 10 Produtos Mais Vendidos" />
+      </v-col>
     </v-row>
 
     <v-row class="mt-4">
-      <v-col cols="12" md="8">
-        <ApexBarAlternativeChart title="Top 10 Produtos Mais Vendidos" />
-      </v-col>
-      <v-col cols="6" sm="3" md="4">
+      <v-col cols="12" sm="3" md="8">
         <ApexAlternativeDonutChart
           title="Margem Bruta vs Margem Líquida"
           class="mb-6"
         />
+      </v-col>
+      <v-col cols="12" md="4">
         <SimpleCard
           title="Ticket médio"
           :value="'R$ 1.200'"
-          :color="'#fff'"
+          :color="cardColor"
           icon="mdi-chart-line"
-          colorIcon="black"
+          :colorIcon="cardColor"
         />
-      </v-col>
-    </v-row>
-
-    <v-row class="mt-4">
-      <v-col cols="12" md="8">
-        <ApexAreaAlternativeChart title="Análise de Tendências" />
-      </v-col>
-      <v-col cols="6" sm="3" md="4">
-        <MapDrilldown />
-      </v-col>
-    </v-row>
-
-    <v-row class="mt-4">
-      <v-col cols="12" md="8">
-        <ApexBarBasicChart title="Faturamento por região" />
-      </v-col>
-      <v-col cols="6" sm="3" md="4">
-        <MapDrilldown />
       </v-col>
     </v-row>
   </div>
@@ -104,7 +110,7 @@ import ApexRadialChart from "../../Scaffold/ApexRadialChart.vue";
 import ApexBarBasicChart from "../../Scaffold/ApexBarBasicChart.vue";
 import ApexAlternativeDonutChart from "../../Scaffold/ApexAlternativeDonutChart.vue";
 import MapDrilldown from "../../Scaffold/MapDrilldown.vue";
-import SimpleCard from "./SimpleCard.vue";
+import SimpleCard from "../../Scaffold/SimpleCard.vue";
 
 export default {
   name: "Dashboard",
@@ -128,6 +134,11 @@ export default {
         to: "2024-12-31",
       },
     };
+  },
+  computed: {
+    cardColor() {
+      return this.$vuetify.theme.dark ? "#212121" : "";
+    },
   },
 };
 </script>

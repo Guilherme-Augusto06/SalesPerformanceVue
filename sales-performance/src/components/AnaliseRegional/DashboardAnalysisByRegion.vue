@@ -54,7 +54,6 @@ import ApexRadialChart from "../Scaffold/ApexRadialChart.vue";
 import ApexBarBasicChart from "../Scaffold/ApexBarBasicChart.vue";
 import ApexAlternativeDonutChart from "../Scaffold/ApexAlternativeDonutChart.vue";
 import MapDrilldown from "../Scaffold/MapDrilldown.vue";
-import SimpleCard from "../DashboardGerencial/Embeeded/SimpleCard.vue";
 import MapPinPoint from "../Scaffold/MapPinPoint.vue";
 ("");
 
@@ -92,7 +91,6 @@ export default {
     ApexBarBasicChart,
     ApexAlternativeDonutChart,
     MapDrilldown,
-    SimpleCard,
     MapPinPoint,
   },
   data() {
