@@ -21,8 +21,7 @@
               @click="add"
             />
           </v-toolbar>
-        </template> 
-
+        </template>
 
         <template #[`item.actions`]="{ item }">
           <div class="d-flex ga-2 justify-end">
@@ -35,8 +34,8 @@
                   size="small"
                   @click="edit(item.id)"
                 />
-              </template> 
-             </v-tooltip>
+              </template>
+            </v-tooltip>
             <v-tooltip text="Excluir meta">
               <template v-slot:activator="{ props }">
                 <v-icon
@@ -146,45 +145,48 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+    <v-dialog v-model="dialogConfirm.show" max-width="400">
+      <v-card>
+        <v-card-title class="text-h6"> Confirmar exclusão </v-card-title>
+        <v-card-text> Tem certeza que deseja excluir esta meta? </v-card-text>
+        <v-card-actions>
+          <v-btn variant="text" @click="dialogConfirm.show = false">
+            Cancelar
+          </v-btn>
+          <v-spacer />
+          <v-btn color="error" variant="elevated" @click="confirmRemove">
+            Excluir
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
+    <!-- Snackbar para alertas -->
+    <v-snackbar v-model="snackbar.show" :color="snackbar.color" timeout="3000">
+      {{ snackbar.text }}
+    </v-snackbar>
   </div>
 </template>
-
 <script>
-import { metasData } from "../../../utils/mockup/dashboard.js";
+import { metasData } from "../../utils/mockup/dashboard.js";
 
 export default {
   data() {
     return {
-      headers: [{
-        title: "Mês",
-        key: "mes",
-      }, {
-        title: "Produto",
-        key: "produto",
-      }, {
-        title: "Cliente",
-        key: "cliente",
-      }, {
-        title: "Região",
-        key: "regiao",
-      }, {
-        title: "Representante",
-        key: "representante",
-      }, {
-        title: "Valor da Meta",
-        key: "valorMeta",
-      }, {
-        title: "Ações",
-        key: "actions",
-      }],
-
-      // Dados do mockup
+      snackbar: {
+        show: false,
+        text: "",
+        color: "success",
+      },
+      dialogConfirm: {
+        show: false,
+        id: null,
+      },
+      headers: metasData.configuracoes.headers,
       meses: metasData.opcoes.meses,
       metas: [...metasData.metas],
-      headers: metasData.configuracoes.headers,
       opcoesMockup: metasData.opcoes,
 
-      // Estado do componente
       dialog: false,
       formModel: {
         mes: "",
@@ -203,7 +205,7 @@ export default {
       },
       rules: {
         campoObrigatorio: [(v) => !!v || "Campo obrigatório"],
-      }
+      },
     };
   },
   computed: {
@@ -235,6 +237,11 @@ export default {
     },
   },
   methods: {
+    showSnackbar(text, color = "success") {
+      this.snackbar.text = text;
+      this.snackbar.color = color;
+      this.snackbar.show = true;
+    },
     createNewRecord() {
       return {
         mes: "",
@@ -269,15 +276,18 @@ export default {
       this.formModel = this.createNewRecord();
     },
     remove(id) {
-      if (confirm("Tem certeza que deseja excluir esta meta?")) {
-        const index = this.metas.findIndex((m) => m.id === id);
-        if (index >= 0) {
-          this.metas.splice(index, 1);
-        }
+      this.dialogConfirm.show = true;
+      this.dialogConfirm.id = id;
+    },
+    confirmRemove() {
+      const index = this.metas.findIndex((m) => m.id === this.dialogConfirm.id);
+      if (index >= 0) {
+        this.metas.splice(index, 1);
+        this.showSnackbar("Meta removida com sucesso!", "success");
       }
+      this.dialogConfirm.show = false;
     },
     save() {
-      // Validação básica
       if (
         !this.formModel.mes ||
         !this.formModel.produto ||
@@ -286,35 +296,37 @@ export default {
         !this.formModel.representante ||
         !this.formModel.valorMeta
       ) {
-        alert("Por favor, preencha todos os campos obrigatórios.");
+        this.showSnackbar(
+          "Por favor, preencha todos os campos obrigatórios.",
+          "error"
+        );
         return;
       }
 
       if (this.formModel.valorMeta <= 0) {
-        alert("O valor da meta deve ser maior que zero.");
+        this.showSnackbar("O valor da meta deve ser maior que zero.", "error");
         return;
       }
 
       if (this.isEditing) {
-        // Editar meta existente
         const index = this.metas.findIndex((m) => m.id === this.formModel.id);
         if (index >= 0) {
           this.metas[index] = { ...this.formModel };
+          this.showSnackbar("Meta atualizada com sucesso!", "success");
         }
       } else {
-        // Adicionar nova meta
         const newMeta = {
           ...this.formModel,
-          id: Date.now(), // Usar timestamp como ID único
+          id: Date.now(),
         };
         this.metas.push(newMeta);
+        this.showSnackbar("Meta cadastrada com sucesso!", "success");
       }
 
       this.dialog = false;
       this.formModel = this.createNewRecord();
     },
     reset() {
-      // Restaura os dados originais do mockup
       this.metas = [...metasData.metas];
       this.resetFilters();
     },

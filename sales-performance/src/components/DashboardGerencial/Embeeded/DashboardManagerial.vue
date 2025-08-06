@@ -63,39 +63,52 @@
         <DonutChart title="Meta vs Realizado" />
       </v-col>
     </v-row>
-
+    <v-row class="mt-4">
+      <v-col cols="12" sm="3" md="4">
+        <SimpleCard
+          title="Ticket médio"
+          :value="'R$ 1.200'"
+          color="deep-purple-accent-3"
+          icon="mdi-chart-line"
+          class="text-white"
+          colorIcon="white"
+        />
+      </v-col>
+      <v-col cols="12" md="4">
+        <SimpleCard
+          title="Margem Líquida"
+          :value="'R$ 1.200'"
+          color="green-accent-3"
+          icon="mdi-cash-multiple"
+          class="text-white"
+          :colorIcon="cardColor"
+        />
+      </v-col>
+      <v-col cols="12" md="4">
+        <SimpleCard
+          title="Margem Bruta"
+          :value="'R$ 1.200'"
+          color="teal-accent-3"
+          icon="mdi-margin"
+          class="text-white"
+          :colorIcon="cardColor"
+        />
+      </v-col>
+    </v-row>
     <v-row>
       <v-col cols="6" sm="3" md="4">
-        <MapDrilldown />
+        <MapDrilldown :enableNavigation="false" />
       </v-col>
       <v-col cols="12" md="4">
         <RadialChart title="Vendas Totais" />
       </v-col>
       <v-col cols="6" sm="4" md="4">
-        <MapDrilldown />
+        <MapDrilldown :enableNavigation="false" />
       </v-col>
     </v-row>
     <v-row class="mt-4">
       <v-col cols="12" md="12">
         <BarAlternativeChart title="Top 10 Produtos Mais Vendidos" />
-      </v-col>
-    </v-row>
-
-    <v-row class="mt-4">
-      <v-col cols="12" sm="3" md="8">
-        <AlternativeDonutChart
-          title="Margem Bruta vs Margem Líquida"
-          class="mb-6"
-        />
-      </v-col>
-      <v-col cols="12" md="4">
-        <SimpleCard
-          title="Ticket médio"
-          :value="'R$ 1.200'"
-          :color="cardColor"
-          icon="mdi-chart-line"
-          :colorIcon="cardColor"
-        />
       </v-col>
     </v-row>
   </div>

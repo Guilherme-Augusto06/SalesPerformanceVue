@@ -30,7 +30,7 @@ export default {
         [1, "#000022"],
       ],
     },
-    hoverColor: { type: String, default: "#BADA55" },
+    hoverColor: { type: String, default: "#fff" },
     showDataLabels: { type: Boolean, default: true },
     dataLabelFormat: { type: String, default: "{point.code}" },
     minValue: { type: Number, default: 0 },
@@ -111,17 +111,7 @@ export default {
           },
         },
         legend: {
-          layout: "horizontal",
-          borderWidth: 0,
-          backgroundColor: isDark
-            ? "rgba(0,0,0,0.6)"
-            : "rgba(255,255,255,0.85)",
-          floating: true,
-          verticalAlign: "top",
-          y: 25,
-          itemStyle: {
-            color: isDark ? "#FFFFFF" : "#000000",
-          },
+          enabled: false,
         },
         colorAxis: {
           min: this.minValue,
