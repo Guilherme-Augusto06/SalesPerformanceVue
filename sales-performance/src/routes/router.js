@@ -1,14 +1,25 @@
 // src/router/index.js
-import { createRouter, createWebHistory } from 'vue-router'
-import DashboardGerencial from '../modulos/Dashboard/DashboardGerencial.vue'
+import { createRouter, createWebHistory } from "vue-router";
+import DefaultLayout from "../layouts/DefaultLayout.vue";
+import DashboardGerencial from "..//modulos/Dashboard/DashboardGerencial.vue";
 
 const routes = [
-  { path: '/', name: 'DashboardGerencial', component: DashboardGerencial },
-]
+  {
+    path: "/",
+    component: DefaultLayout, // layout com Navbar
+    children: [
+      {
+        path: "",
+        name: "DashboardGerencial",
+        component: DashboardGerencial,
+      },
+    ],
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
