@@ -1,9 +1,9 @@
 <template>
   <v-card class="text-center pa-4" elevation="2" rounded="lg" :color="color">
-    <v-icon size="48" :color="colorIcon" class="mb-3">{{
+    <v-icon size="36" :color="colorIcon" class="mb-3 mt-2 position-absolute">{{
       icon || "mdi-trending-up"
     }}</v-icon>
-    <h2 class="text-h4 font-weight-bold white--text mb-1">{{ value }}</h2>
+    <h2 class="font-weight-bold white--text mb-1">{{ value }}</h2>
     <p class="text-subtitle-2 white--text mb-2">{{ title }}</p>
     <v-chip small color="success" text-color="white" v-if="smallValue">
       <v-icon small left color="white">mdi-arrow-up</v-icon>
@@ -47,6 +47,11 @@ export default {
 <style scoped>
 .v-card {
   transition: all 0.3s ease;
+  min-height: 120px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .v-card:hover {

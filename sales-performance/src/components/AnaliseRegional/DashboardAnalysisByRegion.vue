@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <h1 class="text-h3 font-weight-bold mb-2 text-blue-grey-darken-3">
+      <h1 class="text-h4 font-weight-bold mb-2 text-blue-grey-darken-3">
         Análise por região
       </h1>
       <p class="text-subtitle-1 text-grey">Dashboard</p>
@@ -9,7 +9,7 @@
     <v-row class="mt-4">
       <v-col cols="12" md="6">
         <map-drilldown
-          title="Realização de vendas por Estado"
+          title="Potencial de Vendas por Região"
           :data="vendasData.data"
           :series-name="vendasData.seriesName"
           :color-stops="vendasData.colorStops"

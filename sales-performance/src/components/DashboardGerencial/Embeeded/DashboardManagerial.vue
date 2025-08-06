@@ -1,14 +1,14 @@
 <template>
   <div>
     <div>
-      <h1 class="text-h3 font-weight-bold mb-2 text-primary">Dashboard</h1>
+      <h1 class="text-h4 font-weight-bold mb-2 text-primary">Dashboard</h1>
       <p class="text-subtitle-1 text-grey">Dashboard Gerencial</p>
     </div>
     <v-row class="mb-4">
       <v-col cols="6" sm="3" md="3">
         <SimpleCard
           title="Vendas Totais"
-          :value="'R$ 2.450.000'"
+          :value="'R$ 2.450'"
           color="primary"
           icon="mdi-currency-usd"
         />
@@ -16,7 +16,7 @@
       <v-col cols="6" sm="3" md="3">
         <SimpleCard
           title="Meta Mensal"
-          :value="'R$ 1.800.000'"
+          :value="'R$ 1.800'"
           color="primary"
           icon="mdi-target"
         />
@@ -39,30 +39,22 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="12" md="12">
+      <v-col cols="12" md="6">
         <AreaChart title="Evolução de Vendas" />
       </v-col>
-    </v-row>
-    <v-row class="mt-4">
-      <v-col cols="12" md="12">
+      <v-col cols="12" md="6">
         <BarChart title="Vendas Totais" />
       </v-col>
     </v-row>
     <v-row class="mt-4">
-      <v-col cols="12" md="12">
+      <v-col cols="12" md="6">
         <AreaAlternativeChart title="Análise de Tendências" />
       </v-col>
-    </v-row>
-    <v-row class="mt-4">
-      <v-col cols="12" md="12">
+      <v-col cols="12" md="6">
         <BarBasicChart title="Faturamento por região" />
       </v-col>
     </v-row>
-    <v-row>
-      <v-col cols="12" md="12">
-        <DonutChart title="Meta vs Realizado" />
-      </v-col>
-    </v-row>
+
     <v-row class="mt-4">
       <v-col cols="12" sm="3" md="4">
         <SimpleCard
@@ -107,8 +99,11 @@
       </v-col>
     </v-row>
     <v-row class="mt-4">
-      <v-col cols="12" md="12">
+      <v-col cols="12" md="6">
         <BarAlternativeChart title="Top 10 Produtos Mais Vendidos" />
+      </v-col>
+      <v-col cols="12" md="6">
+        <DonutChart title="Meta vs Realizado" />
       </v-col>
     </v-row>
   </div>
