@@ -40,27 +40,27 @@
     </v-row>
     <v-row>
       <v-col cols="12" md="12">
-        <ApexAreaChart title="Evolução de Vendas" />
+        <AreaChart title="Evolução de Vendas" />
       </v-col>
     </v-row>
     <v-row class="mt-4">
       <v-col cols="12" md="12">
-        <ApexBarChart title="Vendas Totais" />
+        <BarChart title="Vendas Totais" />
       </v-col>
     </v-row>
     <v-row class="mt-4">
       <v-col cols="12" md="12">
-        <ApexAreaAlternativeChart title="Análise de Tendências" />
+        <AreaAlternativeChart title="Análise de Tendências" />
       </v-col>
     </v-row>
     <v-row class="mt-4">
       <v-col cols="12" md="12">
-        <ApexBarBasicChart title="Faturamento por região" />
+        <BarBasicChart title="Faturamento por região" />
       </v-col>
     </v-row>
     <v-row>
       <v-col cols="12" md="12">
-        <ApexDonutChart title="Meta vs Realizado" />
+        <DonutChart title="Meta vs Realizado" />
       </v-col>
     </v-row>
 
@@ -69,7 +69,7 @@
         <MapDrilldown />
       </v-col>
       <v-col cols="12" md="4">
-        <ApexRadialChart title="Vendas Totais" />
+        <RadialChart title="Vendas Totais" />
       </v-col>
       <v-col cols="6" sm="4" md="4">
         <MapDrilldown />
@@ -77,13 +77,13 @@
     </v-row>
     <v-row class="mt-4">
       <v-col cols="12" md="12">
-        <ApexBarAlternativeChart title="Top 10 Produtos Mais Vendidos" />
+        <BarAlternativeChart title="Top 10 Produtos Mais Vendidos" />
       </v-col>
     </v-row>
 
     <v-row class="mt-4">
       <v-col cols="12" sm="3" md="8">
-        <ApexAlternativeDonutChart
+        <AlternativeDonutChart
           title="Margem Bruta vs Margem Líquida"
           class="mb-6"
         />
@@ -101,28 +101,28 @@
   </div>
 </template>
 <script>
-import ApexAreaChart from "../../Scaffold/ApexAreaChart.vue";
-import ApexDonutChart from "../../Scaffold/ApexDonutChart.vue";
-import ApexBarChart from "../../Scaffold/ApexBarChart.vue";
-import ApexBarAlternativeChart from "../../Scaffold/ApexBarAlternativeChart.vue";
-import ApexAreaAlternativeChart from "../../Scaffold/ApexAreaAlternativeChart.vue";
-import ApexRadialChart from "../../Scaffold/ApexRadialChart.vue";
-import ApexBarBasicChart from "../../Scaffold/ApexBarBasicChart.vue";
-import ApexAlternativeDonutChart from "../../Scaffold/ApexAlternativeDonutChart.vue";
+import AreaChart from "../../Scaffold/AreaChart.vue";
+import DonutChart from "../../Scaffold/DonutChart.vue";
+import BarChart from "../../Scaffold/BarChart.vue";
+import BarAlternativeChart from "../../Scaffold/BarAlternativeChart.vue";
+import AreaAlternativeChart from "../../Scaffold/AreaAlternativeChart.vue";
+import RadialChart from "../../Scaffold/RadialChart.vue";
+import BarBasicChart from "../../Scaffold/BarBasicChart.vue";
+import AlternativeDonutChart from "../../Scaffold/AlternativeDonutChart.vue";
 import MapDrilldown from "../../Scaffold/MapDrilldown.vue";
 import SimpleCard from "../../Scaffold/SimpleCard.vue";
 
 export default {
   name: "Dashboard",
   components: {
-    ApexAreaChart,
-    ApexDonutChart,
-    ApexBarChart,
-    ApexBarAlternativeChart,
-    ApexAreaAlternativeChart,
-    ApexRadialChart,
-    ApexBarBasicChart,
-    ApexAlternativeDonutChart,
+    AreaChart,
+    DonutChart,
+    BarChart,
+    BarAlternativeChart,
+    AreaAlternativeChart,
+    RadialChart,
+    BarBasicChart,
+    AlternativeDonutChart,
     MapDrilldown,
     SimpleCard,
   },

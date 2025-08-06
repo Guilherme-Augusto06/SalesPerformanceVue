@@ -14,7 +14,7 @@ import { useTheme } from "vuetify";
 import { watch, onMounted, onBeforeUnmount } from "vue";
 
 export default {
-  name: "ApexAreaAlternativeChart",
+  name: "AreaAlternativeChart",
   mixins: [ColorMixin],
   data() {
     return {

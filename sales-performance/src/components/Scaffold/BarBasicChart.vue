@@ -13,7 +13,7 @@ import { useTheme } from "vuetify";
 import { watch, onMounted, onBeforeUnmount } from "vue";
 
 export default {
-  name: "ApexBarBasicChart",
+  name: "BarBasicChart",
   props: {
     title: {
       type: String,

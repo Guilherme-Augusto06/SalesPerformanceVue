@@ -14,7 +14,7 @@ import { useTheme } from "vuetify";
 import { watch } from "vue";
 
 export default {
-  name: "ApexBarChart",
+  name: "BarChart",
   mixins: [ColorMixin],
   data() {
     return {

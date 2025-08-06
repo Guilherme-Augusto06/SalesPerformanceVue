@@ -14,7 +14,7 @@ import { useTheme } from "vuetify";
 import { watch } from "vue";
 
 export default {
-  name: "ApexStackedBarChart",
+  name: "StackedBarChart",
   mixins: [ColorMixin],
   props: {
     title: { type: String, default: "Gráfico de Barras Empilhadas" },

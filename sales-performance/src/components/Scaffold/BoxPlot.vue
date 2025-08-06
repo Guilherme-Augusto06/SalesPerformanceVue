@@ -14,7 +14,7 @@ import { useTheme } from "vuetify";
 import { watch } from "vue";
 
 export default {
-  name: "ApexBoxPlot",
+  name: "BoxPlot",
   mixins: [ColorMixin],
   props: {
     title: { type: String, default: "BoxPlot - Análise de Ticket Médio" },

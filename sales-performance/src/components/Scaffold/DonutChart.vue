@@ -13,7 +13,7 @@ import { useTheme } from "vuetify";
 import { watch } from "vue";
 
 export default {
-  name: "ApexDonutChart",
+  name: "DonutChart",
   props: {
     title: { type: String, default: "Meta vs Realizado" },
     chartData: { type: Array, default: () => [] },

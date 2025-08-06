@@ -8,7 +8,7 @@
     </div>
     <v-row class="mt-4">
       <v-col cols="12" md="6">
-        <ApexBarChart
+        <BarChart
           :title="rankingVolume.title"
           :categories="rankingVolume.categories"
           :values="rankingVolume.values"
@@ -26,7 +26,7 @@
         />
       </v-col>
       <v-col cols="12" md="6">
-        <ApexBarChart
+        <BarChart
           :title="rankingValor.title"
           :categories="rankingValor.categories"
           :values="rankingValor.values"
@@ -47,7 +47,7 @@
 
     <v-row>
       <v-col cols="12" md="12">
-        <ApexAreaAlternativeChart
+        <AreaAlternativeChart
           :title="`Atingimento de Meta - ${clienteSelecionado}`"
           :series="atingimentoMeta.series"
           :categories="atingimentoMeta.meses"
@@ -68,7 +68,7 @@
 
     <v-row class="mt-4">
       <v-col cols="12" md="6">
-        <ApexAreaChart
+        <AreaChart
           :title="historicoCompras.title"
           :categories="historicoCompras.meses"
           :chart-data="historicoCompras.chartData"
@@ -85,7 +85,7 @@
         />
       </v-col>
       <v-col cols="12" sm="3" md="6">
-        <ApexColumnChart
+        <ColumnChart
           :title="frequenciaPedidos.title"
           :series="frequenciaPedidos.series"
           :categories="frequenciaPedidos.meses"
@@ -100,7 +100,7 @@
 
     <v-row class="mt-4">
       <v-col cols="12" md="12">
-        <ApexAreaChart
+        <AreaChart
           :title="clientesInativos.title"
           :categories="clientesInativos.meses"
           :chart-data="clientesInativos.chartData"
@@ -121,17 +121,10 @@
   </div>
 </template>
 <script>
-import ApexAreaChart from "../Scaffold/ApexAreaChart.vue";
-import ApexDonutChart from "../Scaffold/ApexDonutChart.vue";
-import ApexBarChart from "../Scaffold/ApexBarChart.vue";
-import ApexColumnChart from "../Scaffold/ApexColumnChart.vue";
-import ApexBarAlternativeChart from "../Scaffold/ApexBarAlternativeChart.vue";
-import ApexAreaAlternativeChart from "../Scaffold/ApexAreaAlternativeChart.vue";
-import ApexRadialChart from "../Scaffold/ApexRadialChart.vue";
-import ApexBarBasicChart from "../Scaffold/ApexBarBasicChart.vue";
-import ApexAlternativeDonutChart from "../Scaffold/ApexAlternativeDonutChart.vue";
-import MapDrilldown from "../Scaffold/MapDrilldown.vue";
-import SimpleCard from "../Scaffold/SimpleCard.vue";
+import AreaChart from "../Scaffold/AreaChart.vue";
+import BarChart from "../Scaffold/BarChart.vue";
+import ColumnChart from "../Scaffold/ColumnChart.vue";
+import AreaAlternativeChart from "../Scaffold/AreaAlternativeChart.vue";
 
 // Importação dos dados de mockup
 import { dashboardAnalysisByClientData } from "../../utils/mockup/dashboard.js";
@@ -153,17 +146,10 @@ export default {
     },
   },
   components: {
-    ApexAreaChart,
-    ApexDonutChart,
-    ApexBarChart,
-    ApexColumnChart,
-    ApexBarAlternativeChart,
-    ApexAreaAlternativeChart,
-    ApexRadialChart,
-    ApexBarBasicChart,
-    ApexAlternativeDonutChart,
-    MapDrilldown,
-    SimpleCard,
+    AreaChart,
+    BarChart,
+    ColumnChart,
+    AreaAlternativeChart,
   },
   data() {
     return {

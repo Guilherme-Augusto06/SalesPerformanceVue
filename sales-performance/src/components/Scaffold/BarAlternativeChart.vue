@@ -13,7 +13,7 @@ import { useTheme } from "vuetify";
 import { watch } from "vue";
 
 export default {
-  name: "ApexBarAlternativeChart",
+  name: "BarAlternativeChart",
   data() {
     return {
       chart: null,

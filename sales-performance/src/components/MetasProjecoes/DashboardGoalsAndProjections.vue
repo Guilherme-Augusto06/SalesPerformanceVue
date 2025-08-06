@@ -11,7 +11,7 @@
         <DataTable />
       </v-col>
       <v-col cols="12" md="12">
-        <ApexAreaAlternativeChart
+        <AreaAlternativeChart
           :title="`Comparação Meta vs Real`"
           :series="ComparacaoRealVsMeta.series"
           :categories="ComparacaoRealVsMeta.meses"
@@ -32,20 +32,13 @@
   </div>
 </template>
 <script>
-import ApexAreaChart from "../Scaffold/ApexAreaChart.vue";
-import ApexDonutChart from "../Scaffold/ApexDonutChart.vue";
-import ApexBarChart from "../Scaffold/ApexBarChart.vue";
-import ApexColumnChart from "../Scaffold/ApexColumnChart.vue";
-import ApexBarAlternativeChart from "../Scaffold/ApexBarAlternativeChart.vue";
-import ApexAreaAlternativeChart from "../Scaffold/ApexAreaAlternativeChart.vue";
-import ApexRadialChart from "../Scaffold/ApexRadialChart.vue";
-import ApexBarBasicChart from "../Scaffold/ApexBarBasicChart.vue";
-import ApexAlternativeDonutChart from "../Scaffold/ApexAlternativeDonutChart.vue";
-import MapDrilldown from "../Scaffold/MapDrilldown.vue";
-import DataTable from "../DashboardGerencial/Embeeded/DataTable.vue";
+import AreaAlternativeChart from "../Scaffold/AreaAlternativeChart.vue";
+import DataTable from "../Scaffold/DataTable.vue";
 
 // Importação dos dados de mockup
 import { dashboardAnalysisByClientData } from "../../utils/mockup/dashboard.js";
+
+("");
 
 export default {
   name: "DashboardGoalsAndProjections",
@@ -64,16 +57,7 @@ export default {
     },
   },
   components: {
-    ApexAreaChart,
-    ApexDonutChart,
-    ApexBarChart,
-    ApexColumnChart,
-    ApexBarAlternativeChart,
-    ApexAreaAlternativeChart,
-    ApexRadialChart,
-    ApexBarBasicChart,
-    ApexAlternativeDonutChart,
-    MapDrilldown,
+    AreaAlternativeChart,
     DataTable,
   },
   data() {

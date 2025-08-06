@@ -8,7 +8,7 @@
     </div>
     <v-row class="mt-4">
       <v-col cols="12" md="12">
-        <ApexBarChart
+        <BarChart
           :title="ComissoesPagasEstimadas.title"
           :categories="ComissoesPagasEstimadas.categories"
           :values="ComissoesPagasEstimadas.values"
@@ -26,7 +26,7 @@
         />
       </v-col>
       <v-col cols="12" md="12">
-        <ApexAreaAlternativeChart
+        <AreaAlternativeChart
           :title="`Atingimento de Meta - ${clienteSelecionado}`"
           :series="atingimentoMetaPorCanal.series"
           :categories="atingimentoMetaPorCanal.meses"
@@ -44,7 +44,7 @@
         />
       </v-col>
       <v-col cols="12" md="12">
-        <ApexBarChart
+        <BarChart
           :title="DesempenhoVendedor.title"
           :categories="DesempenhoVendedor.categories"
           :values="DesempenhoVendedor.values"
@@ -63,17 +63,9 @@
   </div>
 </template>
 <script>
-import ApexAreaChart from "../Scaffold/ApexAreaChart.vue";
-import ApexDonutChart from "../Scaffold/ApexDonutChart.vue";
-import ApexBarChart from "../Scaffold/ApexBarChart.vue";
-import ApexColumnChart from "../Scaffold/ApexColumnChart.vue";
-import ApexBarAlternativeChart from "../Scaffold/ApexBarAlternativeChart.vue";
-import ApexAreaAlternativeChart from "../Scaffold/ApexAreaAlternativeChart.vue";
-import ApexRadialChart from "../Scaffold/ApexRadialChart.vue";
-import ApexBarBasicChart from "../Scaffold/ApexBarBasicChart.vue";
-import ApexAlternativeDonutChart from "../Scaffold/ApexAlternativeDonutChart.vue";
+import BarChart from "../Scaffold/BarChart.vue";
+import AreaAlternativeChart from "../Scaffold/AreaAlternativeChart.vue";
 import MapDrilldown from "../Scaffold/MapDrilldown.vue";
-import SimpleCard from "../Scaffold/SimpleCard.vue";
 
 // Importação dos dados de mockup
 import {
@@ -99,17 +91,9 @@ export default {
     },
   },
   components: {
-    ApexAreaChart,
-    ApexDonutChart,
-    ApexBarChart,
-    ApexColumnChart,
-    ApexBarAlternativeChart,
-    ApexAreaAlternativeChart,
-    ApexRadialChart,
-    ApexBarBasicChart,
-    ApexAlternativeDonutChart,
+    BarChart,
+    AreaAlternativeChart,
     MapDrilldown,
-    SimpleCard,
   },
   data() {
     return {

@@ -13,7 +13,7 @@ import { useTheme } from "vuetify";
 import { watch, onMounted, onBeforeUnmount } from "vue";
 
 export default {
-  name: "ApexDonutChart",
+  name: "AlternativeDonutChart",
   props: {
     title: {
       type: String,
