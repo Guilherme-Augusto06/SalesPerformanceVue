@@ -19,7 +19,7 @@
           :height="vendasData.height"
           :show-data-labels="vendasData.showDataLabels"
           :data-label-format="vendasData.dataLabelFormat"
-          :enable-navigation="vendasData.enableNavigation"
+          :enable-navigation="false"
         />
       </v-col>
       <v-col cols="12" md="6">
@@ -34,7 +34,7 @@
           :height="vendasData.height"
           :show-data-labels="vendasData.showDataLabels"
           :data-label-format="vendasData.dataLabelFormat"
-          :enable-navigation="vendasData.enableNavigation"
+          :enable-navigation="false"
         />
       </v-col>
       <v-col cols="12" md="12">

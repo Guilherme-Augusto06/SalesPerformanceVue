@@ -14,7 +14,7 @@ import { useTheme } from "vuetify";
 import { onMounted, onBeforeUnmount, watch } from "vue";
 
 export default {
-  name: "ApexAreaChart",
+  name: "AreaChart",
   mixins: [ColorMixin],
   props: {
     title: { type: String, default: "Evolução de Vendas" },
