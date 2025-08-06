@@ -25,6 +25,10 @@ export default createVuetify({
     ...components,
     VDateInput,
   },
+  theme: {
+    defaultTheme: "light", // 'light' | 'dark' | 'system'
+  },
+
   directives,
   theme: {
     defaultTheme: "myCustomTheme",

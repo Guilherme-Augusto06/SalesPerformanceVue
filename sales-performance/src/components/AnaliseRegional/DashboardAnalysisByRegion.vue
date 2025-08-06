@@ -7,9 +7,6 @@
       <p class="text-subtitle-1 text-grey">Dashboard</p>
     </div>
     <v-row class="mt-4">
-      <v-col cols="12" md="12">
-        <map-pin-point />
-      </v-col>
       <v-col cols="12" md="6">
         <map-drilldown
           title="Realização de vendas por Estado"
@@ -40,8 +37,9 @@
           :enable-navigation="vendasData.enableNavigation"
         />
       </v-col>
-      <v-col cols="12" md="12"> </v-col>
-      <v-col cols="12" md="12"> </v-col>
+      <v-col cols="12" md="12">
+        <map-pin-point />
+      </v-col>
     </v-row>
   </div>
 </template>

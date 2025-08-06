@@ -1,11 +1,21 @@
 <template>
   <div class="ml-16 pa-6 mr-16">
     <!-- Título do Dashboard -->
+
     <div>
       <div
-        class="elevation-2 rounded-xl pa-4 bg-white mb-6"
+        class="elevation-2 rounded-xl pa-4 mb-6"
         :style="{ 'border-bottom': `10px solid ${borderColor}` }"
       >
+        <v-btn @click="toggleTheme" class="top-4 right-4" rounded="xl">
+          <v-icon>
+            {{
+              theme.global.name.value === "dark"
+                ? "mdi-moon-waxing-crescent"
+                : "mdi-white-balance-sunny"
+            }}
+          </v-icon>
+        </v-btn>
         <div class="d-flex align-center justify-end mb-4 ga-2">
           <v-btn
             prepend-icon="mdi-filter"
@@ -90,7 +100,6 @@
                 <v-col cols="12" md="2">
                   <v-btn
                     class="mt-4 font-weight-bold"
-                    color="black"
                     variant="tonal"
                     rounded="xl"
                     @click="applyFilters"
@@ -272,6 +281,7 @@ import DashboardGoalsAndProjections from "../../components/MetasProjecoes/Dashbo
 import DashboardAnalysisByRegion from "../../components/AnaliseRegional/DashboardAnalysisByRegion.vue";
 import { shallowRef } from "vue";
 import DashboardAnalysisByOrders from "../../components/AnaliseDePedidos/DashboardAnalysisByOrders.vue";
+import { useTheme } from "vuetify";
 
 export default {
   name: "DashboardGerencial",
@@ -284,6 +294,19 @@ export default {
     DashboardGoalsAndProjections,
     DashboardAnalysisByRegion,
     DashboardAnalysisByOrders,
+  },
+  setup() {
+    const theme = useTheme();
+
+    const toggleTheme = () => {
+      theme.global.name.value =
+        theme.global.name.value === "dark" ? "light" : "dark";
+    };
+
+    return {
+      theme,
+      toggleTheme,
+    };
   },
   data() {
     return {

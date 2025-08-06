@@ -8,7 +8,10 @@
 </template>
 
 <script>
+import ApexCharts from "apexcharts";
 import { ColorGenerator, ColorMixin } from "../../utils/colorGenerator.js";
+import { useTheme } from "vuetify";
+import { watch, onMounted, onBeforeUnmount } from "vue";
 
 export default {
   name: "ApexColumnChart",
@@ -17,36 +20,18 @@ export default {
     return {
       chartId: `apex-column-chart-${Math.random().toString(36).substr(2, 9)}`,
       chart: null,
+      currentTheme: "light",
+      unwatch: null,
     };
   },
-  mounted() {
-    this.renderChart();
-  },
-  beforeDestroy() {
-    if (this.chart) {
-      this.chart.destroy();
-    }
-  },
   props: {
-    title: {
-      type: String,
-      default: "Gráfico de Colunas",
-    },
+    title: { type: String, default: "Gráfico de Colunas" },
     series: {
       type: Array,
       default: () => [
-        {
-          name: "PRODUTO A",
-          data: [44, 55, 41, 67, 22, 43, 21, 49],
-        },
-        {
-          name: "PRODUTO B",
-          data: [13, 23, 20, 8, 13, 27, 33, 12],
-        },
-        {
-          name: "PRODUTO C",
-          data: [11, 17, 15, 15, 21, 14, 15, 13],
-        },
+        { name: "PRODUTO A", data: [44, 55, 41, 67, 22, 43, 21, 49] },
+        { name: "PRODUTO B", data: [13, 23, 20, 8, 13, 27, 33, 12] },
+        { name: "PRODUTO C", data: [11, 17, 15, 15, 21, 14, 15, 13] },
       ],
     },
     categories: {
@@ -62,58 +47,56 @@ export default {
         "2025 Q4",
       ],
     },
-    chartHeight: {
-      type: Number,
-      default: 350,
-    },
-    chartType: {
-      type: String,
-      default: "bar", // 'bar' ou 'column'
-    },
-    stacked: {
-      type: Boolean,
-      default: true,
-    },
-    stackType: {
-      type: String,
-      default: "100%", // 'normal', '100%'
-    },
+    chartHeight: { type: Number, default: 350 },
+    chartType: { type: String, default: "bar" },
+    stacked: { type: Boolean, default: true },
+    stackType: { type: String, default: "100%" },
     colors: {
       type: Array,
       default: () => ["#008FFB", "#00E396", "#FEB019", "#FF4560", "#775DD0"],
     },
-    showLegend: {
-      type: Boolean,
-      default: true,
-    },
-    legendPosition: {
-      type: String,
-      default: "right", // 'top', 'right', 'bottom', 'left'
-    },
-    fillOpacity: {
-      type: Number,
-      default: 1,
-    },
-    showDataLabels: {
-      type: Boolean,
-      default: false,
-    },
-    responsive: {
-      type: Boolean,
-      default: true,
-    },
+    showLegend: { type: Boolean, default: true },
+    legendPosition: { type: String, default: "right" },
+    fillOpacity: { type: Number, default: 1 },
+    showDataLabels: { type: Boolean, default: false },
+    responsive: { type: Boolean, default: true },
   },
   computed: {
     getColorCount() {
       return this.series.length;
     },
-
     finalColors() {
       return this.autoColors ? this.dynamicColors : this.colors;
     },
   },
+  mounted() {
+    const theme = useTheme();
+    this.currentTheme = theme.global.name.value;
+
+    this.unwatch = watch(
+      () => theme.global.name.value,
+      (newTheme) => {
+        this.currentTheme = newTheme;
+        this.renderChart(); // Recria o gráfico com o novo tema
+      }
+    );
+
+    this.renderChart();
+  },
+  beforeUnmount() {
+    if (this.chart) this.chart.destroy();
+    if (this.unwatch) this.unwatch();
+  },
   methods: {
     renderChart() {
+      const element = document.querySelector(`#${this.chartId}`);
+      if (!element) {
+        console.warn(`Elemento com ID ${this.chartId} não encontrado`);
+        return;
+      }
+
+      if (this.chart) this.chart.destroy();
+
       const options = {
         series: this.series,
         chart: {
@@ -121,6 +104,10 @@ export default {
           height: this.chartHeight,
           stacked: this.stacked,
           stackType: this.stackType,
+          background: this.currentTheme,
+        },
+        theme: {
+          mode: this.currentTheme,
         },
         colors: this.finalColors,
         plotOptions: {
@@ -138,10 +125,17 @@ export default {
         },
         xaxis: {
           categories: this.categories,
+          labels: {
+            style: {
+              colors: this.currentTheme === "dark" ? "white" : "black",
+            },
+          },
         },
         yaxis: {
-          title: {
-            text: undefined,
+          labels: {
+            style: {
+              colors: this.currentTheme === "dark" ? "white" : "black",
+            },
           },
         },
         fill: {
@@ -152,6 +146,15 @@ export default {
           position: this.legendPosition,
           offsetX: this.legendPosition === "right" ? 0 : undefined,
           offsetY: this.legendPosition === "right" ? 50 : undefined,
+          labels: {
+            colors: this.currentTheme === "dark" ? "white" : "black",
+          },
+        },
+        tooltip: {
+          theme: this.currentTheme,
+          y: {
+            formatter: (val) => val.toString(),
+          },
         },
         responsive: this.responsive
           ? [
@@ -167,28 +170,8 @@ export default {
               },
             ]
           : [],
-        tooltip: {
-          y: {
-            formatter: function (val) {
-              return val.toString();
-            },
-          },
-        },
       };
 
-      // Verificar se o elemento existe
-      const element = document.querySelector(`#${this.chartId}`);
-      if (!element) {
-        console.warn(`Elemento com ID ${this.chartId} não encontrado`);
-        return;
-      }
-
-      // Destruir gráfico existente se houver
-      if (this.chart) {
-        this.chart.destroy();
-      }
-
-      // Criar nova instância do gráfico
       this.chart = new ApexCharts(element, options);
       this.chart.render();
     },
