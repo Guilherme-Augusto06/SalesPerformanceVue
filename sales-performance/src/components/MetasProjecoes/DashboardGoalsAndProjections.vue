@@ -42,7 +42,6 @@ import ApexRadialChart from "../Scaffold/ApexRadialChart.vue";
 import ApexBarBasicChart from "../Scaffold/ApexBarBasicChart.vue";
 import ApexAlternativeDonutChart from "../Scaffold/ApexAlternativeDonutChart.vue";
 import MapDrilldown from "../Scaffold/MapDrilldown.vue";
-import SimpleCard from "../DashboardGerencial/Embeeded/SimpleCard.vue";
 import DataTable from "../DashboardGerencial/Embeeded/DataTable.vue";
 
 // Importação dos dados de mockup
@@ -75,7 +74,6 @@ export default {
     ApexBarBasicChart,
     ApexAlternativeDonutChart,
     MapDrilldown,
-    SimpleCard,
     DataTable,
   },
   data() {
